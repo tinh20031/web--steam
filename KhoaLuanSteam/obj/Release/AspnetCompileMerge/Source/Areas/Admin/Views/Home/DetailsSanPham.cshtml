@@ -1,0 +1,82 @@
+﻿@model KhoaLuanSteam.Models.THONGTINSANPHAM
+@{
+    ViewBag.Title = "DetailsSanPham";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2 style="padding-bottom:20px;text-align:center">@Model.TenSanPham</h2>
+<div class="row" style="justify-content: center;">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-left:15%">
+        <div class="fw w_100" itemprop="offers">
+            <div class="group-status" style="font-size: 14px; margin-bottom: 15px;">
+                <label style="text-transform:uppercase;font-weight:500;font-weight: bold;">Tên sản phẩm: </label>
+                <span class="first_status margin-bottom-10">
+                    <span class="status_name availabel" style="text-transform:capitalize">
+                         @Html.DisplayFor(model => model.TenSanPham)
+                    </span>
+                </span>
+            </div>
+            <div class="group-status" style="font-size: 14px; margin-bottom: 15px;">
+                <label style="text-transform:uppercase;font-weight:500;font-weight: bold;">Nhà cung cấp: </label>
+                <span class="first_status margin-bottom-10">
+                    <span class="status_name availabel" style="text-transform:capitalize">
+                         @Html.DisplayFor(model => model.NHACUNGCAP.TenNCC)
+                    </span>
+                </span>
+            </div>
+            <div class="group-status" style="font-size: 14px; margin-bottom: 15px;">
+                <label style="text-transform:uppercase;font-weight:500;font-weight: bold;">Loại sản phẩm: </label>
+                <span class="first_status margin-bottom-10">
+                    <span class="status_name availabel" style="text-transform:capitalize">
+                        @Html.DisplayFor(model => model.LOAISANPHAM.TenLoai)
+                    </span>
+                </span>
+            </div>
+            <div class="group-status" style="font-size: 14px; margin-bottom: 15px;">
+                <label style="text-transform:uppercase;font-weight:500;font-weight: bold;">Giá sản phẩm: </label>
+                <span class="first_status margin-bottom-10">
+                    <span class="status_name availabel" style="text-transform:capitalize">
+                       <span>@(Model.GiaSanPham.HasValue ? Model.GiaSanPham.Value.ToString("N0") : "Liên hệ")</span> đ
+                    </span>
+                </span>
+            </div>
+            @*<div class="group-status" style="font-size: 14px; margin-bottom: 15px;">
+                <label style="text-transform:uppercase;font-weight:500;font-weight: bold;">Giảm giá: </label>
+                <span class="first_status margin-bottom-10">
+                    <span class="status_name availabel" style="text-transform:capitalize">
+                        <span>@(Model.GiaSanPham.HasValue ? Model.GiamGia.Value.ToString("N0") : "Liên hệ")</span> %
+                    </span>
+                </span>
+            </div>*@
+            <div class="group-status" style="font-size: 14px; margin-bottom: 15px;">
+                <label style="text-transform:uppercase;font-weight:500;font-weight: bold;">Sơ lược: </label>
+                <span class="first_status margin-bottom-10">
+                    <span class="status_name availabel" style="text-transform:capitalize">
+                        @Html.DisplayFor(model => model.MoTa)
+                    </span>
+                </span>
+            </div>
+            <div class="group-status" style="font-size: 14px; margin-bottom: 15px;">
+                <label style="text-transform:uppercase;font-weight:500;font-weight: bold;">Hình ảnh:</label>
+                <span class="first_status margin-bottom-10">
+                    <span class="status_name availabel" style="text-transform:capitalize">
+                        <img src="/HinhAnhSach/@Model.HinhAnh" width="180" height="250" />
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="group-status" style="font-size: 14px; margin-bottom: 15px;">
+            <label style="text-transform:uppercase;font-weight:500;font-weight: bold;">Số lượng:</label>
+            <span class="first_status margin-bottom-10">
+                <span class="status_name availabel" style="text-transform:capitalize">
+                    @Html.DisplayFor(model => model.SLTon)
+                </span>
+            </span>
+        </div>
+        </div>
+    </div>
+    <div>
+    @Html.ActionLink("Trở về", "AD_ShowAllProduct", new { id = "" }, new { @class = "btn btn-primary"}) |
+    @Html.ActionLink("Sửa", "UpdateSanPham", new { id = Model.MaSanPham },new { @class = "btn btn-primary"})
+</div>
+

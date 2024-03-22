@@ -1,0 +1,145 @@
+﻿@{
+    ViewBag.Title = "ThongKe";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+@using KhoaLuanSteam.Areas.Admin.Controllers
+
+<div class="container-fluid">
+    <h1 class="h3 mb-2 text-gray-800">Các biểu đồ thống kê</h1>
+
+    <div class="row">
+
+        <div class="col-xl-6 col-lg-7">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Thống Kê của công ty 2024</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area">
+                        <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+                    </div>
+                    <hr>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-6 col-lg-5">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Tỉ lệ loại sản phẩm đã nhập từ nhà cung cấp</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-pie pt-4">
+                        <canvas id="myChart1" style="width:100%;max-width:600px"></canvas>
+                    </div>
+                    <hr>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <h1>Danh sách Nhà Cung Cấp nhập hàng</h1>
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th scope="col">Tên Nhà Cung Cấp</th>
+                    <th scope="col">Số Lượng Hàng Nhập</th>
+                    <th scope="col">Tổng Tiền Nhập</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Session["NCC"] != null)
+                {
+                    var nccList = (List<NCCInfo>)Session["NCC"];
+                    foreach (var item in nccList)
+                    {
+                        <tr>
+                            <td>@item.TenNCC</td>
+                            <td>@item.TongSoLuongNhap</td>
+                            <td>@item.TongTienNhap</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+<script>
+            var thang1 = parseInt('@Session["thang1"]');
+            var thang2 = parseInt('@Session["thang2"]');
+            var thang3 = parseInt('@Session["thang3"]');
+            var thang4 = parseInt('@Session["thang4"]');
+            var thang5 = parseInt('@Session["thang5"]');
+            var thang6 = parseInt('@Session["thang6"]');
+            var thang7 = parseInt('@Session["thang7"]');
+            var thang8 = parseInt('@Session["thang8"]');
+            var thang9 = parseInt('@Session["thang9"]');
+            var thang10 = parseInt('@Session["thang10"]');
+            var thang11 = parseInt('@Session["thang11"]');
+            var thang12 = parseInt('@Session["thang12"]');
+            var xValues = ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"];
+            var yValues = [thang1, thang2, thang3, thang4, thang5, thang6, thang7, thang8, thang9, thang10, thang11, thang12];
+            var barColors = ["red", "green", "blue", "orange", "brown", "red", "green", "blue", "orange", "brown", "red", "green"];
+            new Chart("myChart", {
+                type: "bar",
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                        backgroundColor: barColors,
+                        data: yValues
+                    }]
+                },
+                options: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: ""
+                    }
+                }
+            });
+</script>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script>
+            var LoaiMamNon = parseFloat('@Session["TileLoaiMamNon"]');
+            var LoaiCap1 = parseFloat('@Session["TileLoaiC1"]');
+            var LoaiCap2 = parseFloat('@Session["TileLoaiC2"]');
+            var LoaiCap3 = parseFloat('@Session["TileLoaiC3"]');
+            var LoaiKhac = parseFloat('@Session["TileLoaiKhac"]');
+            var xValues = ["Steam mầm non", "Steam cấp 1", "Steam cấp 2", "Steam cấp 3", "Khác"];
+            var yValues = [LoaiMamNon, LoaiCap1, LoaiCap2, LoaiCap3, LoaiKhac];
+            var barColors = [
+                "#b91d47",
+                "#00aba9",
+                "#2b5797",
+                "#e8c3b9",
+                "#1e7145"
+            ];
+            new Chart("myChart1", {
+                type: "doughnut",
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                        backgroundColor: barColors,
+                        data: yValues
+                    }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: ""
+                    }
+                }
+            });
+</script>

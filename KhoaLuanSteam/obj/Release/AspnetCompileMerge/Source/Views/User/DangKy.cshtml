@@ -1,0 +1,101 @@
+﻿@{
+    ViewBag.Title = "DangKy";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<style>
+    .abc .text-box {
+        height: 35px;
+        width: 100%;
+    }
+</style>
+
+@model KhoaLuanSteam.Models.KHACHHANG
+@using (Html.BeginForm())
+{
+
+
+    <section class="breadcrumb-section set-bg" data-setbg="/assets/ecommerce/img/breadcrumb.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>Đăng Ký Tài Khoản</h2>
+                        <div class="breadcrumb__option">
+                            <a href="/">Trang Chủ</a>
+                            <span>Đăng Ký</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    @Html.AntiForgeryToken()
+    if (ViewBag.ThongBao != null)
+    {
+        <label style="color: red;">ViewBag.ThongBao</label>
+    }
+
+    @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+    <div class="container">
+        <div class="row mt-5 mb-5">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="col-lg-6 col-md-6 pb-3">
+                <label>Tên đăng nhập</label>
+                @Html.TextBoxFor(model => model.TenDN, new { @class = "form-control", placeHolder = "", @required = "required" })
+                @Html.ValidationMessageFor(model => model.TenDN, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-lg-6 col-md-6 pb-3">
+                <label>Mật Khẩu</label>
+                @Html.PasswordFor(model => model.MatKhau, new { @class = "form-control", placeHolder = "", ValueType = "PassWord", @required = "required" })
+                @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-lg-6 col-md-6 pb-3">
+                <label>Tên khách hàng</label>
+                @Html.TextBoxFor(model => model.TenKH, new { @class = "form-control", placeHolder = "", @required = "required" })
+                @Html.ValidationMessageFor(model => model.TenKH, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-lg-6 col-md-6 pb-3">
+                <label>Email</label>
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeHolder = "Example@gmail.com", @required = "required" })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-lg-6 col-md-6 pb-3">
+                <label>Điện thoại</label>
+                @Html.TextBoxFor(model => model.SDT, new { @class = "form-control", placeHolder = "", @required = "required" })
+                @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-lg-6 col-md-6 pb-3">
+                <label>Địa chỉ</label>
+                @Html.TextBoxFor(model => model.DiaChi, new { @class = "form-control", placeHolder = "", @required = "required" })
+                @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-lg-6 col-md-6 pb-3">
+                <label>Ngày sinh</label>
+                @Html.TextBoxFor(model => model.NgaySinh, new { @class = "form-control", placeHolder = "", @type = "date", @required = "required" })
+                @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-lg-6 col-md-6 pb-3">
+                <label>Giới tính</label>
+                <div class="abc">
+                    @Html.RadioButtonFor(Model => Model.GioiTinh, "Nam") Nam &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    @Html.RadioButtonFor(Model => Model.GioiTinh, "Nữ")Nữ
+                </div>
+            </div>
+            @*<div class="col-lg-6 col-md-6 pb-3">
+                    <label>Giới tính</label>
+                    <div class="abc">
+                        <input type="radio" id="gender-male" name=@Model.GioiTinh value="Nam" checked>
+                        <label for="gender-male">Nam</label>
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        <input type="radio" id="gender-female" name=@Model.GioiTinh value="Nữ">
+                        <label for="gender-female">Nữ</label>
+                    </div>
+                </div>*@
+
+            <div class="col-lg-12 text-center pb-3">
+                <input type="submit" value="Đăng ký" class="site-btn" />
+            </div>
+        </div>
+    </div>
+}
+

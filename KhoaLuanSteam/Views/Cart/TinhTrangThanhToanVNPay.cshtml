@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "TinhTrangThanhToanVNPay";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="col-xs-12 col-sm-12 col-lg-12 col-left-ac">
+    <h2 style="padding-top: 15px;    padding-left: 15px;">Kết Quả Thanh Toán Đơn Hàng</h2>
+    <div class="alert" id="after" style="margin-left: 18px">
+        <strong style="text-transform: uppercase; font-weight: bold; font-size: 15px;">
+            <span style="margin-right: 5px;" class="glyphicon glyphicon-ok"></span>@ViewBag.Message
+        </strong>
+    </div>
+</div>
+
+<script>
+    /// Js thực hiện tùy chỉnh hiển thị thông báo theo kết quả giao dịch
+    $(function () {
+        if ('@ViewBag.IsSuccess' == "Cancel") {
+            document.getElementById("after").className += " alert-primary";
+        }
+
+        if ('@ViewBag.IsSuccess' == "Yes") {
+            document.getElementById("after").className += " alert-success";
+        }
+
+        if ('@ViewBag.IsSuccess' == "No") {
+            document.getElementById("after").className += " alert-danger";
+        }
+    });
+</script>

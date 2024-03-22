@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "DetailsUserKH";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+@model KhoaLuanSteam.Models.KHACHHANG
+<h2 style="text-transform:uppercase;font-weight:bold;padding-bottom:20px;text-align:center">THÔNG TIN CHI TIẾT NGƯỜI DÙNG</h2>
+<div class="row" style="justify-content: center;">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-left:15%">
+        <div class="fw w_100" itemprop="offers">
+            <div class="group-status" style="font-size: 14px; margin-bottom: 15px;">
+                <label style="text-transform:uppercase;font-weight:500;font-weight: bold;"> Tên:</label>
+                <span class="first_status margin-bottom-10">
+                    <span class="status_name availabel" style="text-transform:capitalize">
+                        @Html.DisplayFor(model => model.TenKH)
+                    </span>
+                </span>
+            </div>
+            <div class="group-status" style="font-size: 14px; margin-bottom: 15px;">
+                <label style="text-transform:uppercase;font-weight:500;font-weight: bold;"> Địa Chỉ:</label>
+                <span class="first_status margin-bottom-10">
+                    <span class="status_name availabel" style="text-transform:capitalize">
+                        @Html.DisplayFor(model => model.DiaChi)
+                    </span>
+                </span>
+            </div>
+            <div class="group-status" style="font-size: 14px; margin-bottom: 15px;">
+                <label style="text-transform:uppercase;font-weight:500;font-weight: bold;"> Email:</label>
+                <span class="first_status margin-bottom-10">
+                    <span class="status_name availabel" style="text-transform:capitalize">
+                        @Html.DisplayFor(model => model.Email)
+                    </span>
+                </span>
+            </div>
+            <div class="group-status" style="font-size: 14px; margin-bottom: 15px;">
+                <label style="text-transform:uppercase;font-weight:500;font-weight: bold;"> Điện Thoại:</label>
+                <span class="first_status margin-bottom-10">
+                    <span class="status_name availabel" style="text-transform:capitalize">
+                        @Html.DisplayFor(model => model.SDT)
+                    </span>
+                </span>
+            </div>
+            <div class="group-status" style="font-size: 14px; margin-bottom: 15px;">
+                <label style="text-transform:uppercase;font-weight:500;font-weight: bold;">Ngày Sinh:</label>
+                <span class="first_status margin-bottom-10">
+                    <span class="status_name availabel" style="text-transform:capitalize">
+                        @Html.DisplayFor(model => model.NgaySinh)
+                    </span>
+                </span>
+            </div>
+            <div class="group-status" style="font-size: 14px; margin-bottom: 15px;">
+                <label style="text-transform:uppercase;font-weight:500;font-weight: bold;">Giới Tinh:</label>
+                <span class="first_status margin-bottom-10">
+                    <span class="status_name availabel" style="text-transform:capitalize">
+                        @Html.DisplayFor(model => model.GioiTinh)
+                    </span>
+                </span>
+            </div>
+            <div class="group-status" style="font-size: 14px; margin-bottom: 15px;">
+                <label style="text-transform:uppercase;font-weight:500;font-weight: bold;">Tên DN:</label>
+                <span class="first_status margin-bottom-10">
+                    <span class="status_name availabel" style="text-transform:capitalize">
+                        @Html.DisplayFor(model => model.TenDN)
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="group-status" style="font-size: 14px; margin-bottom: 15px;">
+            <label style="text-transform:uppercase;font-weight:500;font-weight: bold;">Mật Khẩu:</label>
+            <span class="first_status margin-bottom-10">
+                <span class="status_name availabel" style="text-transform:capitalize">
+                    @Html.DisplayFor(model => model.MaKH)
+                </span>
+            </span>
+        </div>
+            <div class="group-status" style="font-size: 14px; margin-bottom: 15px;">
+                <label style="text-transform:uppercase;font-weight:500;font-weight: bold;">Ngày Tạo:</label>
+                <span class="first_status margin-bottom-10">
+                    <span class="status_name availabel" style="text-transform:capitalize">
+                        @Html.DisplayFor(model => model.NgayTao)
+                    </span>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div>
+            @Html.ActionLink("Trở về", "AD_ShowAllKH", new { id = "" }, new { @class = "btn btn-primary"})
+</div>
+
+

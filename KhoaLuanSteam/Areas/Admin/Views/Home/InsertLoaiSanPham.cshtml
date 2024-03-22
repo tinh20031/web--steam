@@ -1,0 +1,36 @@
+﻿@model  KhoaLuanSteam.Models.LOAISANPHAM
+@{
+    ViewBag.Title = "InsertLoaiSanPham";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml"; 
+}
+
+
+<h2 style="text-align: center;">Thêm loại sản phẩm</h2>
+@using (Html.BeginForm("InsertLoaiSanPham", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @if (ViewBag.Success != null)
+        {
+            <div id="thongBaoThanhCong" class="alert alert-success">@ViewBag.Success</div>
+        }
+        <div class="form-group">
+            @* @Html.LabelFor(model => model.TenLoai, htmlAttributes: new { @class = "control-label col-md-2" }) *@
+            <label class="control-label col-md-2">Tên loại</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.TenLoai, new { @class = "form-control", placeHolder = "", @required = "required" })
+                @Html.ValidationMessageFor(model => model.TenLoai, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group" style="margin-left: 13px;">
+            <span>
+                @Html.ActionLink("Trở về", "AD_ShowAllLoaiSanPham", new { id = "" }, new { @class = "btn btn-primary"})
+            </span>
+            <span class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Thêm" class="btn btn-primary" />
+            </span>
+        </div>
+    </div>
+}

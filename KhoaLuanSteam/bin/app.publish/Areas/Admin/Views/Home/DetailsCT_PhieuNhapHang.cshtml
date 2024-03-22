@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "DetailsCT_PhieuNhapHang";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+@model IEnumerable<KhoaLuanSteam.Models.CT_PHIEUNHAPHANG>
+
+<h2 style="text-align: center;">Chi tiết đơn nhập hàng</h2>
+<div class="card-body" style="padding: 0;">
+    <div class="table-responsive">
+        <table class="table">
+            <tr>
+                <th>
+                    Mã Phiếu Nhập Hàng
+                </th>
+                <th>
+                    Mã Sản Phẩm
+                </th>
+                <th>
+                    Số Lượng
+                </th>
+                <th>
+                    Đơn Giá Nhập
+                </th>
+                <th>
+                    Tổng Tiền
+                </th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaPhieuNhapHang)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaSanPham)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sluong)
+                    </td>
+                    <td>
+                        <p>@String.Format("{0:0,0}", item.DonGiaNhap) đ</p>
+                    </td>
+                    <td>
+                        <p>@String.Format("{0:0,0}", item.TongTien) đ</p>
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td style="text-align: end;">
+                    Tổng tiền nhập hàng
+                </td>
+                <td>
+                    @String.Format("{0:0,0}", ViewBag.TongTienNhapHang) đ
+                </td>
+            </tr>
+        </table>
+    </div>
+  </div>
+
+<div>
+    @Html.ActionLink("Trở về", "AD_ShowAllPhieuNhapHang",new {id=""},new { @class = "btn btn-primary"})
+</div>

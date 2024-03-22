@@ -1,0 +1,98 @@
+﻿@{
+    ViewBag.Title = "ThongTinUser";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+@model  KhoaLuanSteam.Models.KHACHHANG
+
+<section class="breadcrumb-section set-bg" data-setbg="/assets/ecommerce/img/breadcrumb.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>Hồ Sơ</h2>
+                        <div class="breadcrumb__option">
+                            <a href="/">User</a>
+                            <span>Thông Tin Tài Khoản</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+@using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+<div class="container">
+    <div class="row mt-5 mb-5">
+    <div class="col-4">
+        <h3 class="col-12 pb-4">Đơn hàng</h3>
+        <div class="list-group">
+            <a href="~/User/ThongTinUser" class="list-group-item list-group-item-action active" aria-current="true">
+                Thông tin tài khoản
+            </a>
+            <a href="~/Cart/DonHang_KH" class="list-group-item list-group-item-action">Đơn hàng của bạn</a>
+        </div>
+    </div>
+    <div class="col-8">
+        <div class="row">
+            <h3 class="col-12 pb-4">Thông tin tài khoản</h3>
+                    <div class="col-lg-6 col-md-6 pb-3">
+                        @Html.HiddenFor(model => model.MaKH)
+                        <label>Họ và tên</label>
+                        @Html.TextBoxFor(model => model.TenKH, new { style = "height:34px;", @class = "form-control", placeHolder = "", @required = "required" })
+                        @Html.ValidationMessageFor(model => model.TenKH, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-6 col-md-6 pb-3">
+                        <label>Địa chỉ</label>
+                        @Html.TextBoxFor(model => model.DiaChi, new { style = "height:34px;", @class = "form-control", placeHolder = "", @required = "required" })
+                        @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <label>Email</label>
+                        @Html.TextBoxFor(model => model.Email, new { style = "height:34px;", @class = "form-control", placeHolder = "", @required = "required" })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-6 col-md-6 pb-3">
+                        <label>Điện thoại</label>
+                       @Html.TextBoxFor(model => model.SDT, new { style = "height:34px;", @class = "form-control", placeHolder = "", @required = "required" })
+                        @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-6 col-md-6 pb-3">
+                        <label>Ngày sinh</label>
+                       @Html.TextBoxFor(model => model.NgaySinh, new { style = "height:34px;", @class = "form-control", placeHolder = "", @required = "required" })
+                        @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger" })
+                    </div>
+                    @*<div class="col-lg-6 col-md-6 pb-3">
+                        <label>Giới tính</label>
+                       @Html.TextBoxFor(model => model.GioiTinh, new { style = "height:34px;", @class = "form-control", @readonly = "readonly", placeHolder = "", @required = "required" })
+                        @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger" })
+                    </div>*@
+                    
+                    <fieldset class="col-lg-6 col-md-6 pb-3">
+                        @* @Html.LabelFor(model => model.GioiTinh, htmlAttributes: new { @class = "control-label col-md-2" }) *@
+                        <label>Giới tính</label>
+                        <div class="col-md-10">
+                            @Html.RadioButtonFor(Model => Model.GioiTinh, "Nam") Nam &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                            @Html.RadioButtonFor(Model => Model.GioiTinh, "Nữ")Nữ
+                        </div>
+                    </fieldset>
+
+                    <div class="col-lg-6 col-md-6 pb-3">
+                        <label>Tài khoản</label>
+                       @Html.TextBoxFor(model => model.TenDN, new { style = "height:34px;", @class = "form-control", @readonly = "readonly", placeHolder = "", @required = "required" })
+                        @Html.ValidationMessageFor(model => model.TenDN, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-6 col-md-6 pb-3">
+                        <label>Mật khẩu</label>
+                       @Html.TextBoxFor(model => model.MatKhau, new { style = "height:34px;", @class = "form-control", placeHolder = "", Type = "PassWord", @required = "required" })
+                        @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-12 text-center pb-3">
+                        <input type="submit" class="site-btn" value="Cập nhật" />
+                    </div>
+                </div>
+    </div>
+</div>
+</div>
+}

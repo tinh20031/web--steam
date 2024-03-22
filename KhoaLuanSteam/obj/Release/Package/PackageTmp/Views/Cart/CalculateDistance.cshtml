@@ -1,0 +1,93 @@
+﻿@*@model KhoaLuanSteam.Models.DistanceCalculation*@
+@model KhoaLuanSteam.ViewModel.MyViewModel
+
+
+@using (Html.BeginForm("CalculateDistance", "Cart", FormMethod.Post))
+{
+    @*<div class="form-group">
+        @Html.LabelFor(model => model.DistanceCalculation.StartLocation)
+        @Html.TextBoxFor(model => model.DistanceCalculation.StartLocation, new { @class = "form-control", value = "2" })
+    </div>*@
+
+<div class="form-group">
+    <label>Thay đỗi địa chỉ nhận hàng </label>
+    @Html.TextBoxFor(model => model.DistanceCalculation.EndLocation, new { @class = "form-control", @required = "required" })
+</div>
+
+
+
+    <div class="form-group">
+        <input type="submit" value="Cập nhập địa chỉ" class="btn btn-primary" />
+    </div>
+}
+
+@if (@Session["DiaChiNhan"] !=null)
+{
+    <div class="form-group">
+        <h3>Địa chỉ nhận hàng: @Session["DiaChiNhan"]</h3>
+    </div>
+}
+
+@*@model DistanceCalculation*@
+@*@model KhoaLuanSteam.Models.DistanceCalculation*@
+
+@*<h2>Calculate Distance</h2>
+    <form>
+        <div class="form-group">
+            <label for="StartLocation">Origin:</label>
+            <input type="text" class="form-control" id="StartLocation" name="StartLocation" value="@Model.StartLocation" onchange="submit()">
+        </div>
+        <div class="form-group">
+            <label for="EndLocation">Destination:</label>
+            <input type="text" class="form-control" id="EndLocation" name="EndLocation" value="@Model.EndLocation" onchange="submit()">
+        </div>
+        <div class="form-group">
+            <label for="distance">Distance:</label>
+            <input type="text" class="form-control" id="Distance" name="Distance" value="@Model.Distance" disabled>
+        </div>
+    </form>
+
+    <script>
+        function submit() {
+            var form = document.forms[0];
+            var action = '/Distance/CalculateDistance';
+            var method = 'post';
+            form.action = action;
+            form.method = method;
+            form.submit();
+        }
+    </script>*@
+
+@*@model KhoaLuanSteam.Models.DistanceCalculation
+    <form>
+        <div>
+            <label for="startLocation">Start Location:</label>
+            <input type="text" id="startLocation" name="startLocation" value="@Model.StartLocation">
+        </div>
+        <div>
+            <label for="endLocation">End Location:</label>
+            <input type="text" id="endLocation" name="endLocation" value="@Model.EndLocation" onchange="calculateDistance()">
+        </div>
+        <div>
+            Distance: @Model.Distance Kilometers
+        </div>
+    </form>
+
+    <script>
+        function calculateDistance() {
+            var startLocation = document.getElementById("startLocation").value;
+            var endLocation = document.getElementById("endLocation").value;
+
+            $.ajax({
+                url: "/controller-name/CalculateDistance",
+                type: "POST",
+                data: { startLocation: startLocation, endLocation: endLocation },
+                success: function (distance) {
+                    // Cập nhật khoảng cách mới
+                    document.querySelector("#distance").innerHTML = "Distance: " + distance + " Kilometers";
+                }
+            });
+        }
+    </script>*@
+
+

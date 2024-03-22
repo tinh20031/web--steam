@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "AD_ShowAllSale";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+@model IEnumerable<KhoaLuanSteam.Models.SALE>
+
+<h2>Quản lý danh sách Sale</h2>
+<p>
+    @Html.ActionLink("Thêm Sale", "InsertSale")
+</p>
+<table class="table" id="example">
+    <thead>
+        <tr>
+            <th>
+                Mã Sale
+            </th>
+            <th>
+                Tên Sale
+            </th>
+            <th>
+                Ngày bắt đầu
+            </th>
+            <th>
+                Ngày kết thúc
+            </th>
+            <th>Sản phẩm Sale</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr id="row_@item.MASL">
+                <td>
+                    @Html.DisplayFor(modelItem => item.MASL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TENSL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NGAYBATDAU)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NGAYKETTHUC)
+                </td>
+                <td>
+                    @*<a href="@Url.Action("AD_ShowAllSPSale", "Home", new { id = item.MASL})">
+                            Thêm
+                        </a>*@
+                    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("AD_ShowAllSPSale", "Home" ,new { id = item.MASL})'">
+                        Thêm
+                    </button>
+                    <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("AD_ShowDetailSale", "Home" ,new { id = item.MASL})'">
+                        Xem chi tiết
+                    </button>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+

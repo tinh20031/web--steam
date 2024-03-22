@@ -1,0 +1,81 @@
+﻿.content_hover {
+    margin-top: 200px
+}
+
+.title {
+    color: #1a1a1a;
+    text-align: center;
+    margin-bottom: 10px
+}
+
+.content_hover {
+    position: relative;
+    width: 90%;
+    max-width: 400px;
+    margin: auto;
+    overflow: hidden
+}
+.content_hover .content-overlay {
+    background: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    -webkit-transition: all 0.4s ease-in-out 0s;
+    -moz-transition: all 0.4s ease-in-out 0s;
+    transition: all 0.4s ease-in-out 0s
+}
+.content_hover:hover .content-overlay {
+    opacity: 1
+}
+
+.content-image {
+  
+    height:100%
+}
+
+img {
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+
+ .content_hover .xem_nhanh {
+    width: 50px;
+    height: 50px;
+    line-height: 55px;
+    border: solid 1px #ebebeb;
+    background: #ebebeb;
+    border-radius: 50%;
+   
+    position: absolute;
+    top: 50%;
+    left: 50%;
+     opacity: 0;
+        padding: 0px;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+}
+.xem_nhanh .fa {
+    line-height: 30px;
+    font-size: 20px;
+   
+}
+
+
+ .content_hover:hover .xem_nhanh{
+   
+    opacity: 1
+}
+ .xem_nhanh:hover {
+    background: #0099ae;
+    border-color: #0099ae;
+    color:white;
+   
+}

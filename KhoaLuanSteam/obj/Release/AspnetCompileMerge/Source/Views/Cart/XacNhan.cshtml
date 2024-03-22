@@ -1,0 +1,79 @@
+﻿@{
+    ViewBag.Title = "XacNhan";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+@using KhoaLuanSteam.Models;
+<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+@model List<KhoaLuanSteam.Models.GioHang>
+<section class="breadcrumb-section set-bg" data-setbg="/assets/ecommerce/img/breadcrumb.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>Xác Nhận Đơn Hàng</h2>
+                        <div class="breadcrumb__option">
+                            <a href="/">Trang Chủ</a>
+                            <span>Xác Nhận Đơn Hàng</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<div class="container">
+    <div class="alert " id="previous" style="width: 100%; text-align:center;background-color: whitesmoke;margin-top: 24px">
+        <strong style="text-transform:uppercase;font-size:23px;">Xác Nhận Đơn Hàng</strong>
+        <br /><br />
+        <strong style="font-size: 15px;">Tổng Số Lượng Sản Phẩm Bạn Đã Đặt: @ViewBag.Quantity</strong> <br />
+        <strong style="font-size: 15px;">Thành Tiền: @String.Format("{0:0,0}", ViewBag.Total) VND</strong>
+        <br /> <br />
+        <input type="submit" class="btn btn-warning" value="Xác Nhận" onclick="XacNhan()" /> &nbsp;&nbsp;&nbsp;
+        <input type="submit" class="btn btn-warning" value="Hủy" onclick="Huy()" />
+    </div>
+    <div class="alert alert-success" id="after" style="display: none; margin-top: 15px;    margin-left: 29px;">
+        <strong style="font-size: 17px; text-transform: uppercase;"><span class="glyphicon glyphicon-ok"></span> Đơn Hàng đã được xác nhận Thành Công , Xin Cám Ơn</strong>
+        <p style="text-align: center; color: red;">Bạn Sẽ Được Chuyển Về Trang Mua Hàng Trong <span id="countdown"></span></p>
+    </div>
+</div>
+<script>
+    function XacNhan() {
+        $.ajax({
+            type: "POST",
+            url: "/Cart/XacNhanEmail",
+            data: { MaDH: @ViewBag.Madh },
+            success:function(msg) {
+                $('#previous').hide();
+                $('#after').show();
+                alert(msg);
+                window.setTimeout(function () {
+                    window.location.href = '@Url.Action("TrangChu", "Home")';
+                }, 10000);
+            }
+        });
+    }
+    function Huy() {
+        $.ajax({
+            type: "POST",
+            url: "/Cart/DeleteDonDatHang",
+            data: { MaDH: @ViewBag.Madh },
+            success:function(msg) {
+                $('#previous').hide();
+                $('#after').show();
+                alert(msg);
+                window.setTimeout(function () {
+                    window.location.href = '@Url.Action("TrangChu", "Home")';
+                }, 10000);
+            }
+        });
+    }
+    var timeleft = 1;
+    var downloadTimer = setInterval(function () {
+        if (timeleft <= 0) {
+            clearInterval(downloadTimer);
+            document.getElementById("countdown").innerHTML = "0 s";
+        } else {
+            document.getElementById("countdown").innerHTML = timeleft + " s";
+        }
+        timeleft -= 1;
+    }, 1000);
+</script>

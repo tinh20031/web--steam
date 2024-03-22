@@ -1,0 +1,241 @@
+﻿
+@media (min-width: 1200px){
+.container {
+    width: 1200px
+;
+}
+           }
+.section_product_sale {
+    background: #fff;
+    margin-bottom: 30px;
+    padding-top: 10px;
+}
+
+section, .section, .block {
+    width: 100%;
+    float: left;
+}
+.title_module_main {
+    width: 100%;
+    float: left;
+    position: relative;
+}
+.section_product_sale {
+    background: #fff;
+    margin-bottom: 30px
+;
+    padding-top: 10px
+;
+}
+.title_module_main .h2, .title_module_main h2 {
+    font-family: "Roboto","HelveticaNeue","Helvetica Neue",sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 13px 15px 10px;
+    line-height: 17px;
+    margin: 0 0 10px
+;
+    text-transform: uppercase;
+    width: 100%;
+    float: left;
+    letter-spacing: 0;
+}
+.title_module_main .h2 span, .title_module_main .h2 a, .title_module_main h2 span, .title_module_main h2 a {
+    color: #0c0c0c;
+    text-decoration: none;
+    font-size: 16px;
+    padding-bottom: 8px;
+}
+.title_module_main .view_all a {
+    color: #333;
+    float: right;
+    margin-right: 15px;
+    line-height: 30px;
+    position: absolute;
+    top: 7px;
+    right: 10px;
+}
+.section_product_sale .product-sale {
+    width: 100%;
+    float: left;
+}
+.swiper-container {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    z-index: 1;
+}
+@media (min-width: 992px) {
+    .col-md-3, .col-sm-12, .col-xs-12 {
+        padding-right: 5px !important;
+        padding-left: 5px !important;
+    }
+}
+item_product_main .product-item-main .product-bottom {
+    width: 100%;
+    float: left;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    min-height: 99px;
+}
+.item_product_main .product-item-main .product-bottom .product-name {
+    font-family: "Roboto","HelveticaNeue","Helvetica Neue",sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 5px;
+    overflow: hidden;
+    text-transform: uppercase;
+    word-wrap: break-word;
+    line-height: 22px;
+    padding: 10px 15px 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+}
+ .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    color: #323c3f;
+    letter-spacing: .01em;
+}
+ .item_product_main .product-item-main .product-bottom .product-name a {
+    color: #636363;
+    text-decoration: none;
+}
+ .item_product_main .product-item-main .product-bottom .blockprice {
+    min-height: 30px;
+    width: 100%;
+     
+    float: left;
+}
+ .item_product_main .product-item-main .product-bottom .price-box {
+    position: relative;
+    display: inline-block;
+    float: left;
+    width: 100%;
+    text-align: center;
+}
+ .item_product_main .product-item-main .product-bottom .price-box .product-price {
+    font-size: 20px;
+    font-weight: 700;
+    font-family: "Roboto","HelveticaNeue","Helvetica Neue",sans-serif;
+    color: #f26522;
+    font-weight: 600;
+    line-height: 20px;
+    margin-right: 10px
+;
+}
+ .item_product_main .product-item-main .product-bottom .price-box .compare-price {
+    font-size: 13px;
+    font-family: "Roboto","HelveticaNeue","Helvetica Neue",sans-serif;
+    line-height: 20px;
+    font-weight: 400;
+    margin-right: 0px;
+    color: #636363;
+    text-decoration: line-through;
+}
+.item_product_main .product-item-main .product-action {
+    text-align: center;
+    height: 40px;
+    width: 100%;
+    float: left;
+    z-index: 10;
+}
+.item_product_main .product-item-main .product-action form .group_action .button_35 {
+    border: 2px solid #e1e1e1;
+    font-family: "Roboto","HelveticaNeue","Helvetica Neue",sans-serif;
+    color: #898989;
+    font-size: 13px;
+    font-weight: 400;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    padding: 7px 15px 8px 40px;
+    background: #fff;
+}
+.item_product_main .product-item-main .product-action form .group_action .button_35:before {
+    content: "";
+    position: absolute;
+    top: 9px;
+    left: 20px;
+    width: 14px;
+    height: 16px;
+    background-image: url(//bizweb.dktcdn.net/100/047/782/themes/833677/assets/icon-sprites.png?1614393720044);
+    background-color: #898989;
+    background-position: top left;
+    background-repeat: no-repeat;
+}
+
+.section_online_support {
+    background: #fff;
+    margin-bottom: 30px;
+    padding: 15px 0;
+}
+.title_module_main {
+    width: 100%;
+    float: left;
+    position: relative;
+}
+.section_online_support .support-content {
+    padding: 0 0 10px;
+    width: 100%;
+    float: left;
+}
+.section_online_support .support-content .support:first-child {
+    margin-top: 0;
+}
+.section_online_support .support-content .support {
+    padding-left: 30px;
+    margin-left: 15px;
+     font-size: 13px; 
+    margin-top: 7px;
+    background: url(//bizweb.dktcdn.net/100/047/782/themes/833677/assets/support-online.png?1614393720044) left center no-repeat;
+}
+.section_online_support .support-content .support .hd-support {
+    display: block;
+    color: #000000;
+}
+.section_online_support .support-content .support.support-email {
+    background: url(//bizweb.dktcdn.net/100/047/782/themes/833677/assets/email.png?1614393720044) left center no-repeat;
+}
+.section_social {
+    background: #fff;
+    margin-bottom: 30px;
+    padding: 10px 0;
+}
+.title_module_main {
+    width: 100%;
+    float: left;
+    position: relative;
+}
+.section_social .social-index {
+    width: 100%;
+    float: left;
+    padding-left: 15px
+;
+}
+.section_social .social-index .social-content {
+    display: block;
+    margin-right: 15px;
+    font-size: 15px;
+    float: left;
+}
+.section_social .social-index .social-content .fa-facebook-square {
+    color: #507dc0;
+}
+.section_social .social-index .social-content i {
+    font-size: 2em;
+}
+.section_social .social-index .social-content .fa-twitter-square {
+    color: #62cdf1;
+}
+.section_social .social-index .social-content .fa-google-plus-square {
+    color: #898989;
+}
+.section_social .social-index .social-content .fa-pinterest-square {
+    color: #ef6160;
+}
+/*----********************phan menu ohai*/
+

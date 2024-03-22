@@ -1,0 +1,43 @@
+﻿.col-left-ac .block-account .title-account {
+    font-family: "Roboto",sans-serif;
+    font-size: 19px;
+    font-weight: 400;
+    color: #212B25;
+    margin-bottom: 7px;
+    text-transform: uppercase;
+}
+.col-left-ac .block-account p {
+    font-weight: 700;
+    font-size: 14px;
+    font-family: "Roboto",sans-serif;
+    line-height: 16px;
+    margin-bottom: 28px;
+    color: #212B25;
+    position: relative;
+}
+.col-left-ac .block-account ul {
+    padding: 0;
+    margin: 0;
+}
+.col-left-ac .block-account ul .title-info.active {
+    color: #0099ae;
+}
+.col-left-ac .block-account ul .title-info {
+    font-weight: 400;
+    font-size: 14px;
+    font-family: "Roboto",sans-serif;
+    color: #0099ae;
+    margin-bottom: 22px;
+    display: block;
+}
+ .title-head {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 0;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+ .page_customer_account .col-right-ac .name-account {
+    margin-bottom: 40px;
+}

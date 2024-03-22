@@ -1,0 +1,146 @@
+﻿@{
+    ViewBag.Title = "ThanhToan";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+@using KhoaLuanSteam.Models;
+@model List<KhoaLuanSteam.Models.GioHang>
+@section jsFooter{
+    <script src="/Content/Client/js/controller/cartController.js"></script>
+}
+
+<!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="/assets/ecommerce/img/breadcrumb.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>Checkout</h2>
+                        <div class="breadcrumb__option">
+                            <a href="/">Home</a>
+                            <span>Checkout</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Breadcrumb Section End -->
+
+<!-- Checkout Section Begin -->
+    @if (Model.Count > 0){
+    <section class="shoping-cart spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="shoping__cart__table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="shoping__product">Sản phẩm</th>
+                                    <th>Giá</th>
+                                    <th>Số lượng</th>
+                                    <th>Thành tiền</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td class="shoping__cart__item">
+                                            <img style="width: 101px;" src="~/HinhAnhSach/@item.sanpham.HinhAnh" alt="@item.sanpham.HinhAnh">
+                                            <h5>@item.sanpham.TenSanPham</h5>
+                                        </td>
+                                        <td class="shoping__cart__price">
+                                            @if (@item.iGiamGia <= 0)
+                                            {
+                                                <span>
+                                                    @item.sanpham.GiaSanPham.GetValueOrDefault(0).ToString("N0") đ
+                                                </span>
+                                            }
+                                            else
+                                            {
+                                                <span>
+                                                    @Html.Action("giasachgiam", "Product", new { @masanpham = @item.sanpham.MaSanPham })
+                                                </span>
+
+                                            }
+                                        </td>
+                                        <td class="shoping__cart__quantity">
+                                            <input type="number" style="border: none; text-align: center;" class="txtQuantity" readonly="readonly" data-id="@item.sanpham.MaSanPham" value="@item.iSoLuong">
+                                        </td>
+                                        <td class="shoping__cart__total">
+                                            @if (@item.iGiamGia <= 0)
+                                            {
+                                                <span>
+                                                    @((item.sanpham.GiaSanPham.GetValueOrDefault(0) * item.iSoLuong).ToString("N0")) đ
+                                                </span>
+                                            }
+                                            else
+                                            {
+                                                <span>
+                                                    @(((item.sanpham.GiaSanPham.GetValueOrDefault(0) * (((double)(100 - item.iGiamGia) / (double)100 ))) * item.iSoLuong).ToString("N0")) đ
+                                                </span>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="text-align: end;">Phí ship: </td>
+                                    <td>
+                                        @if (@Session["Kilomet"] != null)
+                                        {
+                                            <strong>
+                                                @{
+                                                    object myObject = new Object();
+                                                    string myObjectString = Session["Kilomet"].ToString();
+                                                    double phiship = double.Parse(myObjectString);
+                                                    @String.Format("{0:0,0} đ", phiship);
+                                                }
+                                            </strong>
+                                        }
+                                        else
+                                        {
+                                            <strong>0 đ</strong>
+                                        }
+
+                                        </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="text-align: end;">Tổng cộng: </td>
+                                    <td><strong>@String.Format("{0:0,0}", ViewBag.Total) đ</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="shoping__cart__btns">
+                        <a href="/Cart/Index" class="primary-btn cart-btn"><i class="fa fa-angle-left"></i> Trở về</a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    @*@Html.Action("CalculateDistance", "Cart")*@
+
+    @Html.Action("ThongTinKhachHang", "Cart")
+    }else{
+        <div class="wrap_background_aside padding-top-15 margin-bottom-40" style="padding-left:22px">
+        <div class="header-cart">
+
+            <div class="header-cart title_cart_pc hidden-sm hidden-xs"><p class="hidden-xs-down">Không có sản phẩm nào. Quay lại <a href="~/Home/SanPham">cửa hàng</a> để tiếp tục mua sắm.</p></div>
+        </div>
+        <a style="margin-bottom: 20px;" href="~/Home/SanPham" class="primary-btn cart-btn"><i class="fa fa-angle-left"></i> Tiếp tục mua hàng</a>
+    </div>
+    }
+    <!-- Checkout Section End -->

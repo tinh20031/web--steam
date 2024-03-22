@@ -1,0 +1,154 @@
+﻿@model KhoaLuanSteam.Models.LIENHE
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-section set-bg" data-setbg="/assets/ecommerce/img/breadcrumb.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb__text">
+                    <h2>Liên Hệ Với Chúng Tôi</h2>
+                    <div class="breadcrumb__option">
+                        <a href="/">Trang Chủ</a>
+                        <span>Liên Hệ đỗi trả</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+
+@if (@ViewBag.Success != null)
+{
+    <div class="col-md-12" style="margin-top:10px">
+        <div class="form-group">
+            <div class="col-md-12 text-center">
+                <label class="alert alert-success" style="color:red; font-size:20px; font-weight:bold;width:100%;text-align:center;text-transform:uppercase">@ViewBag.success</label>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- Contact Section Begin -->
+<section class="contact spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-6 text-center">
+                <div class="contact__widget">
+                    <span class="icon_phone"></span>
+                    <h4>Phone</h4>
+                    <p>(028) 3810 9058</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 text-center">
+                <div class="contact__widget">
+                    <span class="icon_pin_alt"></span>
+                    <h4>Địa chỉ</h4>
+                    <p>140 Lê Trọng Tấn, Phường Tây Thạnh, Quận Tân Phú, TP.HCM</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 text-center">
+                <div class="contact__widget">
+                    <span class="icon_clock_alt"></span>
+                    <h4>Mở cửa</h4>
+                    <p>08:00 am đến 22:00 pm</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 text-center">
+                <div class="contact__widget">
+                    <span class="icon_mail_alt"></span>
+                    <h4>Email</h4>
+                    <p>lienhe@newbrain.vn</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Contact Section End -->
+<!-- Map Begin -->
+<div class="map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d49116.39176087041!2d-86.41867791216099!3d39.69977417971648!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x886ca48c841038a1%3A0x70cfba96bf847f0!2sPlainfield%2C%20IN%2C%20USA!5e0!3m2!1sen!2sbd!4v1586106673811!5m2!1sen!2sbd"
+            height="500" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    <div class="map-inside">
+        <i class="icon_pin"></i>
+        <div class="inside-widget">
+            <h4>Thành phố Hồ Chí Minh</h4>
+            <ul>
+                <li>Điện thoại: (028) 3810 9058</li>
+                <li>Địa chỉ: 140 Lê Trọng Tấn, Phường Tây Thạnh, Quận Tân Phú, TP.HCM</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Map End -->
+<!-- Contact Form Begin -->
+@*@using (Html.BeginForm())*@
+@using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="contact-form spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="contact__form__title">
+                        <h2>LIÊN HỆ ĐỖI TRẢ</h2>
+                    </div>
+                </div>
+            </div>
+            <form action="#">
+                <div class="row">
+                    @*<div class="col-lg-6 col-md-6 pb-3">
+            @Html.TextBoxFor(model => model.Ho, new { @class = "form-control", placeHolder = "Họ" })
+            @Html.ValidationMessageFor(model => model.Ho, "", new { @class = "text-danger" })
+        </div>*@
+
+                    <div class="col-lg-12 text-center pb-3">
+                        @Html.TextBoxFor(model => model.Email, new
+                                        {
+                                            @class = "form-control",
+                                            placeHolder = "Example@gmail.com",
+                                            @required = "required"
+                                        })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-6 col-md-6 pb-3">
+                        @Html.TextBoxFor(model => model.HoTen, new { @class = "form-control", placeHolder = "Họ Và Tên", @required = "required" })
+                        @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-6 col-md-6 pb-3">
+                        @Html.TextBoxFor(model => model.DienThoai, new { @class = "form-control", placeHolder = "Điện thoại", @required = "required" })
+                        @Html.ValidationMessageFor(model => model.DienThoai, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-lg-2 col-md-6 pb-3">
+                        @Html.DropDownList("MaPhieuDH", null, "Chọn phiếu đặt hàng", new { @class = "form-control", style = "height: 35px;", @required = "required" })
+                        @Html.ValidationMessageFor(model => model.MaPhieuDH, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-5 col-md-6 pb-3">
+                        <input type="file" name="fileUpload" required /> Chọn ảnh hóa đơn
+                        @ViewBag.Alert
+                    </div>
+
+                    <div class="col-lg-5 col-md-6 pb-3">
+                        <input type="file" name="fileUpload1" required /> Chọn ảnh sản phẩm
+                        @ViewBag.Alert
+                    </div>
+
+
+                    <div class="col-lg-12 text-center pb-3">
+                        @* <textarea placeholder="Ý kiến của bạn"></textarea> *@
+                        @Html.TextAreaFor(model => model.NoiDung, new { @class = "form-control mb-3", @rows = "7", @placeholder = "Nhập tin nhắn bạn ở đây. Chúng tôi sẽ cố gắng phản hồi trong thời gian sớm nhất!", @required = "required" })
+                        @Html.ValidationMessageFor(model => model.NoiDung, "", new { @class = "text-danger" })
+                        @*<button type="submit" class="site-btn">Gửi</button>*@
+                        <input type="submit" value="Gửi" class="btn btn-primary" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+}
+<!-- Contact Form End -->

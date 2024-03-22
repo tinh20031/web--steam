@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="57f141d89df846b9833dbf81fb024154" Name="Diagram1" ZoomLevel="69">
+        <EntityTypeShape EntityType="QL_THIETBISTEAMModel.CT_DonDatHangNCC" Width="1.5" PointX="11.25" PointY="6.25" />
+        <EntityTypeShape EntityType="QL_THIETBISTEAMModel.CT_PHIEUDATHANG" Width="1.5" PointX="8.25" PointY="10.375" />
+        <EntityTypeShape EntityType="QL_THIETBISTEAMModel.CT_PHIEUNHAPHANG" Width="1.5" PointX="13.5" PointY="6.25" />
+        <EntityTypeShape EntityType="QL_THIETBISTEAMModel.DOITRA" Width="1.5" PointX="10.5" PointY="14.5" />
+        <EntityTypeShape EntityType="QL_THIETBISTEAMModel.DonDatHangNCC" Width="1.5" PointX="3" PointY="5.875" />
+        <EntityTypeShape EntityType="QL_THIETBISTEAMModel.KHACHHANG" Width="1.5" PointX="3.75" PointY="13.125" />
+        <EntityTypeShape EntityType="QL_THIETBISTEAMModel.LIENHE" Width="1.5" PointX="8.25" PointY="14.25" />
+        <EntityTypeShape EntityType="QL_THIETBISTEAMModel.LOAISANPHAM" Width="1.5" PointX="3.75" PointY="2.625" />
+        <EntityTypeShape EntityType="QL_THIETBISTEAMModel.NHACUNGCAP" Width="1.5" PointX="0.75" PointY="6.25" />
+        <EntityTypeShape EntityType="QL_THIETBISTEAMModel.NHANVIEN" Width="1.5" PointX="0.75" PointY="1.75" />
+        <EntityTypeShape EntityType="QL_THIETBISTEAMModel.PHANQUYEN" Width="1.5" PointX="1.5" PointY="10.625" />
+        <EntityTypeShape EntityType="QL_THIETBISTEAMModel.PHIEUDATHANG" Width="1.5" PointX="6" PointY="11.875" />
+        <EntityTypeShape EntityType="QL_THIETBISTEAMModel.PHIEUGIAOHANG" Width="1.5" PointX="8.25" PointY="18.125" />
+        <EntityTypeShape EntityType="QL_THIETBISTEAMModel.PHIEUNHAPHANG" Width="1.5" PointX="8.25" PointY="6" />
+        <EntityTypeShape EntityType="QL_THIETBISTEAMModel.SALE" Width="1.5" PointX="6" PointY="2.5" />
+        <EntityTypeShape EntityType="QL_THIETBISTEAMModel.SPSALE" Width="1.5" PointX="8.25" PointY="2.375" />
+        <EntityTypeShape EntityType="QL_THIETBISTEAMModel.THONGTINSANPHAM" Width="1.5" PointX="6" PointY="5.5" />
+        <EntityTypeShape EntityType="QL_THIETBISTEAMModel.TINHTRANGDH" Width="1.5" PointX="3.75" PointY="10.75" />
+        <AssociationConnector Association="QL_THIETBISTEAMModel.FK_CT_DonDatHangNCC_DDHNCC" />
+        <AssociationConnector Association="QL_THIETBISTEAMModel.FK_CT_DonDatHangNCC_TTSP" />
+        <AssociationConnector Association="QL_THIETBISTEAMModel.FK_CT_PHIEUDH_PDT" />
+        <AssociationConnector Association="QL_THIETBISTEAMModel.FK_CT_PHIEUDH_TTSP" />
+        <AssociationConnector Association="QL_THIETBISTEAMModel.FK_CT_PHIEUNHAPHANG_PNH" />
+        <AssociationConnector Association="QL_THIETBISTEAMModel.FK_CT_PHIEUNHAPHANG_TTSP" />
+        <AssociationConnector Association="QL_THIETBISTEAMModel.FK_LIENHE_DOITRA" />
+        <AssociationConnector Association="QL_THIETBISTEAMModel.FK_DonDatHangNCC_NHACUNGCAP" />
+        <AssociationConnector Association="QL_THIETBISTEAMModel.FK_DonDatHangNCC_NHANVIEN" />
+        <AssociationConnector Association="QL_THIETBISTEAMModel.FK_PHIEUNHAPHANG_DonDatHangNCC" />
+        <AssociationConnector Association="QL_THIETBISTEAMModel.FK_PHIEUDATHANG_KH" />
+        <AssociationConnector Association="QL_THIETBISTEAMModel.FK_LIENHE_PHIEUDATHANG" />
+        <AssociationConnector Association="QL_THIETBISTEAMModel.FK_THONGTINSACH_LOAISANPHAM" />
+        <AssociationConnector Association="QL_THIETBISTEAMModel.FK_PHIEUNHAPHANG_NHACUNGCAP" />
+        <AssociationConnector Association="QL_THIETBISTEAMModel.FK_THONGTINSACH_NHACUNGCAP" />
+        <AssociationConnector Association="QL_THIETBISTEAMModel.FK_NHANVIEN_PHANQUYEN" />
+        <AssociationConnector Association="QL_THIETBISTEAMModel.FK_PHIEUNHAPHANG_NHANVIEN" />
+        <AssociationConnector Association="QL_THIETBISTEAMModel.FK_PHIEUDATHANG_TINHTRANGDH" />
+        <AssociationConnector Association="QL_THIETBISTEAMModel.FK_PHIEUGIAOHANG_PDH" />
+        <AssociationConnector Association="QL_THIETBISTEAMModel.FK_SL_SPSL" />
+        <AssociationConnector Association="QL_THIETBISTEAMModel.FK_SANPHAM_SPSL" />
+        <EntityTypeShape EntityType="QL_THIETBISTEAMModel.sysdiagram" Width="1.5" PointX="10.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,196 @@
+﻿@{
+    ViewBag.Title = "TrangChu";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<!-- Categories Section Begin -->
+    <section class="categories">
+        <div class="container">
+            <div class="row">
+                <div class="categories__slider owl-carousel">
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-setbg="/img/banner4.jpg">
+                             <h5><a href="#">Iphone</a></h5> 
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-setbg="/img/banner5.jpg">
+                             <h5><a href="#">SamSung</a></h5> 
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-setbg="/img/banner6.jpg">
+                             <h5><a href="#">Xixaomi</a></h5> 
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-setbg="/img/banner7.jpg">
+                             <h5><a href="#">Oppo</a></h5> 
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-setbg="/img/banner8.jpg">
+                             <h5><a href="#">Vivo</a></h5> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Categories Section End -->
+    <!-- Featured Section Begin -->
+    <section class="featured spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>Sản Phẩm Từng Loại</h2>
+                    </div>
+                    <div class="featured__controls">
+                        <ul>
+                            <li class="active" data-filter="*">Tất cả</li>
+                            <li data-filter=".steammn">Sản Phẩm 1</li>
+                            <li data-filter=".steam1">Sản phẩm 2</li>
+                            <li data-filter=".steam2">Sản phẩm 3</li>
+                            <li data-filter=".steam3">Sản phảm 4</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            @Html.Action("TopDateProduct", "Product")
+            
+        </div>
+    </section>
+    <!-- Featured Section End -->
+    <!-- Banner Begin -->
+   @* <div class="banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="banner__pic">
+                        <img src="~/img/banner9.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="banner__pic">
+                        <img src="~/img/banner10.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+    <!-- Banner End -->
+    <!-- Latest Product Section Begin -->
+    <section class="latest-product spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="latest-product__text">
+                        <h4>Sản Phẩm mới</h4>
+                        <div class="latest-product__slider owl-carousel">
+                            <div class="latest-prdouct__slider__item">
+                                @Html.Action("LatestProducts", "Product")
+                            </div>
+                            <div class="latest-prdouct__slider__item">
+                                @Html.Action("LatestProducts", "Product")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="latest-product__text">
+                        <h4>Sản Phẩm Bán Chạy</h4>
+                        <div class="latest-product__slider owl-carousel">
+                            <div class="latest-prdouct__slider__item">
+                                @Html.Action("FavoriteProduct", "Product")
+                            </div>
+                            <div class="latest-prdouct__slider__item">
+                                @Html.Action("FavoriteProduct", "Product")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="latest-product__text">
+                        <h4>Sản Phẩm Giảm Giá</h4>
+                        <div class="latest-product__slider owl-carousel">
+                            <div class="latest-prdouct__slider__item">
+                                @Html.Action("Productdiscounts", "Product")
+                            </div>
+                            <div class="latest-prdouct__slider__item">
+                                @Html.Action("Productdiscounts", "Product")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Latest Product Section End -->
+    <!-- Blog Section Begin -->
+    <section class="from-blog spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title from-blog__title">
+                        <h2>Tin Tức</h2>
+                    </div>
+                </div>
+            </div>
+          @*  <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="blog__item">
+                        <div class="blog__item__pic">
+                            <img src="~/img/blog1.png" alt="">
+                        </div>
+                        <div class="blog__item__text">
+                            <ul>
+                                <li><i class="fa fa-calendar-o"></i> 04 Th11 2020</li>
+                                <li><i class="fa fa-comment-o"></i> 5</li>
+                            </ul>
+                            <h5><a href="#">Chuyến tham quan 3D xưởng thành phẩm Gigo ở Đài Loan</a></h5>
+                            <p>Năm 2020, do dịch bệnh vi-rút corona (COVID-19), khiến giao thông quốc tế bị gián ...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="blog__item">
+                        <div class="blog__item__pic">
+                            <img src="~/img/blog2.png" alt="">
+                        </div>
+                        <div class="blog__item__text">
+                            <ul>
+                                <li><i class="fa fa-calendar-o"></i> 28 Th4 2020</li>
+                                <li><i class="fa fa-comment-o"></i> 4</li>
+                            </ul>
+                            <h5><a href="#">Giáo án dạy trẻ tô màu phối đồ trang phục lớp mầm chồi lá</a></h5>
+                            <p>I. Mục đích yêu cầu và chủ đề chính: 1.Kiến thức: Trẻ biết ...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="blog__item">
+                        <div class="blog__item__pic">
+                            <img src="~/img/blog3.png" alt="">
+                        </div>
+                        <div class="blog__item__text">
+                            <ul>
+                                <li><i class="fa fa-calendar-o"></i> 17 Th3 2020</li>
+                                <li><i class="fa fa-comment-o"></i> 7</li>
+                            </ul>
+                            <h5><a href="#">Giải pháp STEAM của Gigo có đáng để đầu tư</a></h5>
+                            <p>Giáo dục tích hợp STEAM là mô hình giáo dục hàng đầu tại các nước ...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>    *@
+        </div>
+    </section>
+    <!-- Blog Section End -->
+
+
+<div>
+    
+</div>
+

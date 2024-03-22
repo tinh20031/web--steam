@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "InsertPhanHoiDoiTra";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+@model  KhoaLuanSteam.Models.DOITRA
+<h2 style="padding-bottom:20px;text-align:center">PHẢN HỒI KHÁCH HÀNG</h2>
+@using (Html.BeginForm("InsertPhanHoiDoiTra", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="row" style="justify-content: center;">
+        <hr />
+        @if (ViewBag.Success != null)
+        {
+            <div id="thongBaoThanhCong" class="alert alert-success">@ViewBag.Success</div>
+        }
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-left:15%">
+            <div class="fw w_100" itemprop="offers">
+                <div class="group-status" style="font-size: 14px; margin-bottom: 15px;">
+                    <label style="text-transform:uppercase;font-weight:500;font-weight: bold;">Nội Dung Phản Hồi: </label>
+                    <span class="first_status margin-bottom-10">
+                        <span class="status_name availabel" style="text-transform:capitalize">
+                            <div class="form-outline">
+                                <textarea class="form-control" id="textArea" name="PhanHoi" rows="4"></textarea>
+                            </div>
+                        </span>
+                    </span>
+                </div>
+
+                <span class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Phản hồi" class="btn btn-success" />
+                </span>
+            </div>
+        </div>
+
+    </div>
+    <div>
+        @Html.ActionLink("Trở về", "FeedBack_KH", new { id = "" }, new { @class = "btn btn-primary" })
+    </div>
+}
+

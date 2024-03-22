@@ -1,0 +1,35 @@
+﻿@model IEnumerable<KhoaLuanSteam.ViewModel.ProductInSale>
+
+
+@foreach (var item in Model)
+{
+    <a href="/Product/ChiTietSP/@item.THONGTINSANPHAM.MaSanPham" class="latest-product__item">
+        <div class="latest-product__item__pic product__discount__item__pic" style="height: 110px !important;">
+            <img src="/HinhAnhSach/@item.THONGTINSANPHAM.HinhAnh" alt="@item.THONGTINSANPHAM.TenSanPham" title="@item.THONGTINSANPHAM.HinhAnh">
+            @if (@item.GIAMGIA > 0){
+                <div class="product__discount__percent">-@item.GIAMGIA%</div>
+            }
+        </div>
+        <div class="latest-product__item__text">
+            <h6>@(item.THONGTINSANPHAM.TenSanPham.Length > 26 ? item.THONGTINSANPHAM.TenSanPham.Substring(0, 22) + "..." : item.THONGTINSANPHAM.TenSanPham)</h6>
+                @* <span>@item.GiaSanPham.Value.ToString("N0") đ</span>
+                @Html.Action("giasachgiam", "Product", new { @MaSanPham = @item.MaSanPham }) *@
+
+                @if (@item.GIAMGIA <= 0)
+                            {
+                                <span>
+                                    @item.THONGTINSANPHAM.GiaSanPham.Value.ToString("N0") đ
+                                </span>
+                            }else{
+                                
+                                <span style="color:red; font-size:18px; font-weight:700; line-height:27px;">
+                                    @Html.Action("giasachgiam", "Product", new { @MaSanPham = @item.THONGTINSANPHAM.MaSanPham })
+                                   
+                                </span>
+                                <span style="text-decoration: line-through; color:#b2b2b2 !important; font-size: 15px !important; margin-left: 0px; font-weight: 500;">
+                                    @item.THONGTINSANPHAM.GiaSanPham.Value.ToString("N0") đ
+                                </span>
+                            } 
+        </div>
+    </a>
+}

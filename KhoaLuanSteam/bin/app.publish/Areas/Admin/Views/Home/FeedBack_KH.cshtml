@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "FeedBack_KH";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+@model IEnumerable<KhoaLuanSteam.Models.LIENHE>
+<h2 style="text-align: center;">Phản hồi từ khách hàng</h2>
+<div class="card-body" style="padding: 0;">
+    <div class="table-responsive">
+        <table class="table" id="example">
+    <thead>
+        <tr>
+            <th>
+                Mã Liên Hệ
+            </th>
+            <th>
+                Mã Phiếu Mua
+            </th>
+            <th>
+                Họ Và Tên
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Điện thoại
+            </th>
+            <th>
+                Ngày cập nhật
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr id="row_@item.MaLH">
+            <td>
+                @Html.DisplayFor(modelItem => item.MaLH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaPhieuDH)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Ho)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.HoTen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DienThoai)
+            </td>
+            <td>
+                @String.Format("{0:dd/MM/yyyy}", item.NgayCapNhat)
+            </td>
+            <td>
+                @Html.ActionLink("Xem", "FeedDetail_KH", new { id = item.MaLH }, new { @class = "btn btn-primary" }) |
+                @Ajax.ActionLink("Xóa", "DeleteFeedBack_KH", new { id = item.MaLH }, new AjaxOptions
+           {
+               Confirm = "Bạn có muốn xóa phản hồi này không?",
+               OnComplete = "$('#row_" + @item.MaLH + "').remove()",
+               HttpMethod = "Delete"
+           }, new { @class = "btn btn-primary" })
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+    </div>
+  </div>
+

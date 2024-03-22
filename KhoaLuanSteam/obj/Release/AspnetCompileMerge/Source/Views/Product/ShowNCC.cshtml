@@ -1,0 +1,10 @@
+﻿@model IEnumerable<KhoaLuanSteam.Models.NHACUNGCAP>
+
+<ul>
+    @{
+        foreach (var item in Model)
+        {
+            <li><a href="@Url.Action("SPTheoNCC", "Product", new { @maNCC = @item.MaNCC })">@item.TenNCC</a></li>
+        }
+    }
+</ul>

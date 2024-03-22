@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "AD_ShowAllDonDatHangNCC";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+@model IEnumerable<KhoaLuanSteam.Models.DonDatHangNCC>
+
+<h2 style="text-align: center;">Quản lý đơn đặt hàng từ nhà cung cấp</h2>
+<p>
+    @Html.ActionLink("Tạo đơn đặt hàng từ nhà cung cấp", "TaoDonDatHangNCC")
+</p>
+<div class="card-body" style="padding: 0;">
+    <div class="table-responsive">
+        <table class="table" id="example">
+            <thead>
+                <tr>
+                    <th>
+                        Mã đơn đặt hàng NCC
+                    </th>
+                    <th>
+                        Mã nhà cung cấp
+                    </th>
+                    <th>
+                        Mã nhân viên
+                    </th>
+                    <th>
+                        Ngày đặt
+                    </th>
+                    <th>
+                        Tổng số lượng
+                    </th>
+                    <th>
+                        Tổng tiền
+                    </th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    @*<tr id="row_@item.MaPhieuNhapHang.Trim()">*@
+                <tr id="row_@item.MaDonDatHangNCC">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaDonDatHangNCC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NHACUNGCAP.MaNCC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NHANVIEN.MaNV)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NgayLap)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TongSL)
+                    </td>
+                    <td>
+                        @*@Html.DisplayFor(modelItem => item.TongTien)*@
+                        @String.Format("{0:0,0}", item.TongTien) đ
+                    </td>
+                    <td>
+                        @Html.ActionLink("Xem", "DetailsCT_DonDatHangNCC", new { id = item.MaDonDatHangNCC }, new { @class = "btn btn-primary" })
+                    </td>
+                    <td>
+                        <input type="button" value="Xuất File Excel" class="btn btn-primary mb-3" onclick="location.href='@Url.Action("ExportToExcel_CTDonDatHangNhaCC", "Home", new { madondathangncc = item.MaDonDatHangNCC })'" />
+                    </td>
+                </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>
+

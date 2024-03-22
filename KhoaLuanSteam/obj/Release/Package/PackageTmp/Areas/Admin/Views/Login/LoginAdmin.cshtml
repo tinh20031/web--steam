@@ -1,0 +1,97 @@
+﻿@*@model  KhoaLuanSteam.Models.Admin*@
+
+
+@model KhoaLuanSteam.Models.NHANVIEN
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>LoginAdmin</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Css/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="Css/owl.carousel.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="Css/bootstrap.min.css">
+    <!-- Style -->
+    <link rel="stylesheet" href="Css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <div class="content" style="margin-top: 150px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="~/img/admin.png" alt="Image" class="img-fluid">
+                </div>
+                <div class="col-md-6 contents">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="mb-4">
+                                <h3>Sign In</h3>
+                                <p class="mb-4">For System Administrators</p>
+                            </div>
+                            @using (Html.BeginForm("LoginAdmin", "Login", FormMethod.Post))
+                            {
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    <label>User Name</label>
+                                    @Html.TextBoxFor(model => model.TenDN, new { @class = "form-control", @autofocus = "autofocus", @placeholder = "Tên đăng nhập" })
+                                    @Html.ValidationMessageFor(model => model.TenDN, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    @Html.PasswordFor(model => model.MatKhau, new { @class = "form-control", @placeholder = "Mật khẩu" })
+                                    @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="d-flex mb-5 align-items-center">
+                                    <label class="control control--checkbox mb-0">
+                                        <span class="caption">Remember me</span>
+                                        <input type="checkbox" checked="checked" />
+                                        <div class="control__indicator"></div>
+                                    </label>
+                                    <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>
+                                </div>
+                                <div class="form-group">
+                                    <button style="background-color:#0094ff" type="submit" class="btn btn-success btn-block">Đăng nhập</button>
+                                </div>
+                            }
+                            <span class="d-block text-left my-4 text-muted">&mdash; or login with &mdash;</span>
+                            <div class="social-login">
+                                <a href="#" class="facebook" style="background-color:#000000">
+                                    <span class="fa fa-facebook-official"></span>
+                                </a>
+                                <a href="#" class="twitter">
+                                    <span class="icon-twitter mr-3"></span>
+                                </a>
+                                <a href="#" class="google">
+                                    <span class="fa fa-google-plus"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="/Content/Admin/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/Content/Admin/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/Content/Admin/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="/Content/Admin/dist/js/sb-admin-2.js"></script>
+    <script src="~/js/loginadmin.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
+
+
+

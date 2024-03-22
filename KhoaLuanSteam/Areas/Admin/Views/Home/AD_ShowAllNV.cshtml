@@ -1,0 +1,118 @@
+﻿@{
+    ViewBag.Title = "AD_ShowAllNV";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+@model IEnumerable<KhoaLuanSteam.Models.NHANVIEN>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+<h2 style="text-align: center;">Danh sách nhân viên</h2>
+<p>
+    @Html.ActionLink("Thêm nhân viên", "InsertNhanVien")
+</p>
+<div class="card-body" style="padding: 0;">
+    <div class="table-responsive">
+        <table class="table" id="example">
+            <thead>
+                <tr>
+                    <th>
+                        @* @Html.DisplayNameFor(model => model.TenNV) *@
+                        Tên nhân viên
+                    </th>
+                    <th>
+                        @* @Html.DisplayNameFor(model => model.GioiTinh) *@
+                        Giới tính
+                    </th>
+                    <th>
+                        @* @Html.DisplayNameFor(model => model.Email) *@
+                        Email
+                    </th>
+                    <th>
+                        @* @Html.DisplayNameFor(model => model.SoDT) *@
+                        Số điện thoại
+                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.ID_PhanQuyen)
+                        </th>*@
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr id="row_@item.MaNV">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TenNV)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GioiTinh)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SoDT)
+                        </td>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.ID_PhanQuyen)
+                            </td>*@
+                        <td>
+                            @Html.ActionLink("Xem", "DetailsUserNV", new { id = item.MaNV }, new { @class = "btn btn-primary" }) |
+                            <button class="btn btn-danger delete-btn" data-id="@item.MaNV">Xóa</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    $(document).ready(function () {
+        $('.delete-btn').click(function () {
+            var id = $(this).data('id');
+            // Sử dụng SweetAlert2 thay vì hộp thoại confirm
+            Swal.fire({
+                title: 'Bạn có muốn xóa nhân viên này không?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Xóa',
+                cancelButtonText: 'Hủy'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '@Url.Action("DeleteUserNV", "Home")' + '/' + id,
+                        type: 'DELETE',
+                        success: function (response) {
+                            if (response.success) {
+                                $('#row_' + id).remove();
+                                Swal.fire({
+                                    title: 'Xóa thành công',
+                                    icon: 'success'
+                                });
+                            } else {
+                                Swal.fire({
+                                    title: 'Xóa thất bại',
+                                    text: 'Có lỗi xảy ra khi xóa sản phẩm.',
+                                    icon: 'error'
+                                });
+                            }
+                        },
+                        error: function () {
+                            Swal.fire({
+                                title: 'Lỗi',
+                                text: 'Đã xảy ra lỗi khi xóa sản phẩm.',
+                                icon: 'error'
+                            });
+                        }
+                    });
+                }
+            });
+        });
+    });
+</script>

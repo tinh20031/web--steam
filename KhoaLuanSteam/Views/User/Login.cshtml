@@ -1,0 +1,81 @@
+﻿@model KhoaLuanSteam.Models.KHACHHANG
+
+@* <ul>
+    @if (Session["User"] == null)
+    {
+        <li><a href="/User/DangKy">Đăng ký</a></li>
+        <li class="click_menu">
+            <a href="#" data-toggle="dropdown">Đăng Nhập<i class="fa fa-angle-down"></i></a>
+            <div style="left: -50%;">
+
+            </div>
+            <ul class="dropdown-menu nav-link" style="margin-left: -50%;margin-top: 13%;">
+                <li>
+                    <div class="row">
+                        <div class="col-md-12" style="padding-top: calc(var(--bs-gutter-x) * .5);">
+                            @using (Html.BeginForm("PageDangNhap", "User", FormMethod.Post))
+                            {
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    @Html.TextBoxFor(model => model.TenDN, new { @class = "form-control", @autofocus = "autofocus", @placeholder = "Tên đăng nhập" })
+                                    @Html.ValidationMessageFor(model => model.TenDN, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.PasswordFor(model => model.MatKhau, new { @class = "form-control", @placeholder = "Mật khẩu" })
+                                    @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"> Ghi nhớ?
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <button style="background-color:#0094ff" type="submit" class="btn btn-success btn-block">Đăng nhập</button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li><a href="/Admin/Login">Admin</a></li>
+
+    }
+    else
+    {
+        <li><a href="~/User/DangXuat">Đăng Xuất</a></li>
+        <li class="click_menu">
+            <a href="#">Tài khoản: <span>@Session["User"]</span><i class="fa fa-angle-down"></i></a>
+            <ul class="click_menu_show" style="display: none;">
+                <li><a href="~/User/ThongTinUser">Hồ sơ</a></li>
+                <li><a href="~/Cart/DonHang_KH">Đơn Hàng</a></li>
+                <li><a href="~/User/DangXuat">Đăng xuất</a></li>
+            </ul>
+        </li>
+        <li><a href="~/User/ThongTinUser">Hồ sơ</a></li>
+    }
+
+</ul> *@
+@if (Session["User"] == null)
+    {
+        <div class="header__top__right__auth pr-3">
+            <a href="~/User/DangKy"><i class="fa fa-user"></i>Đăng Ký</a>
+        </div>
+        <div class="header__top__right__auth">
+            <a href="~/User/PageDangNhap"><i class="fa fa-user"></i>Đăng Nhập</a>
+        </div>
+    }
+    else
+    {
+        <div class="header__top__right__auth pr-3">
+            <a href="~/User/DangXuat"><i class="fa fa-user"></i>Đăng Xuất</a>
+        </div>
+        <div class="header__top__right__auth pr-3">
+            <a href="~/User/ThongTinUser"><i class="fa fa-user"></i>Tài khoản: <span style="color: red;">@Session["User"]</span></a>
+        </div>
+        <div class="header__top__right__auth">
+            <a href="~/User/ThongTinUser"><i class="fa fa-user"></i>Hồ sơ</a>
+        </div>
+    }
+
+

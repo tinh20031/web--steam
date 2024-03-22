@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "DetailsCT_DonDatHangNCC";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+@model IEnumerable<KhoaLuanSteam.Models.CT_DonDatHangNCC>
+
+<h2 style="text-align: center;">Chi tiết đơn đặt hàng từ nhà cung cấp</h2>
+<div class="card-body" style="padding: 0;">
+    <div class="table-responsive">
+        <table class="table">
+            <tr>
+                <th>
+                    Mã đơn nhập hàng từ NCC
+                </th>
+                <th>
+                    Mã sản phẩm
+                </th>
+                <th>
+                    Mã đơn nhập hàng
+                </th>
+                <th>
+                    Số Lượng
+                </th>
+                <th>
+                    Đơn giá nhập
+                </th>
+                <th>
+                    Tổng tiền
+                </th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaDonDatHangNCC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaSanPham)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DonDatHangNCC.MaDonDatHangNCC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Soluong)
+                    </td>
+                    <td>
+                        <p>@String.Format("{0:0,0}", item.DonGiaDat) đ</p>
+                    </td>
+                    <td>
+                        <p>@String.Format("{0:0,0}", item.TongTien) đ</p>
+                    </td>
+                </tr>
+            }
+        <tr>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td style="text-align: end;">
+                Tổng tiền đơn nhập đặt
+            </td>
+            <td>
+                @String.Format("{0:0,0}", ViewBag.TongTienDonDatHangNCC) đ
+            </td>
+        </tr>
+        </table>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Trở về", "AD_ShowAllDonDatHangNCC", new { id = "" }, new { @class = "btn btn-primary" })
+</div>

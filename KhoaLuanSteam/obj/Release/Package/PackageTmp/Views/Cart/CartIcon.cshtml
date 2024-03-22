@@ -1,0 +1,10 @@
+﻿
+@model List<KhoaLuanSteam.Models.GioHang>
+
+
+@if (@Model.Count > 0)
+{
+    <li><a href="/Cart/Index"><i class="fa fa-shopping-bag"></i> <span>@Model.Count</span></a></li>
+}else{
+    <li><a href="/Cart/Index"><i class="fa fa-shopping-bag"></i> <span>0</span></a></li>
+}

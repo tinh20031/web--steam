@@ -1,0 +1,161 @@
+﻿@model  KhoaLuanSteam.Models.CT_DonDatHangNCC
+
+@{
+    ViewBag.Title = "GuiDsSanPhamDenNCC";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+@*@model IEnumerable<KhoaLuanSteam.Models.CT_DonDatHangNCC>*@
+
+<h2 style="text-align: center;">Nhập sản phẩm từ nhà cung cấp</h2>
+@using (Html.BeginForm("GuiDsSanPhamDenNCC", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @if (ViewBag.Success != null)
+        {
+            <div id="thongBaoThanhCong" class="alert alert-success">@ViewBag.Success</div>
+        }
+
+
+
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label class="control-label col-md-3">Sản phẩm</label>
+                    <div class="col-md-10">
+                        @*@Html.DropDownList("MaSanPham", null, "Chọn Sản Phẩm", new { @class = "form-control", style = "height: 35px", @required = "required" })*@
+                        @Html.DropDownList("MaSanPham", null, "Chọn Sản Phẩm", new { @class = "form-control", style = "height: 35px", @required = "required", onchange = "getProductPrice(this.value)" })
+                        @Html.ValidationMessageFor(model => model.MaSanPham, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3">Số lượng</label>
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Soluong, new { @class = "form-control", placeHolder = "", @required = "required" })
+                        @Html.ValidationMessageFor(model => model.Soluong, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @*<div class="form-group">
+                        <label class="control-label col-md-3">Đơn giá</label>
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.DonGiaDat, new { @class = "form-control", placeHolder = "", @required = "required" })
+                            @Html.ValidationMessageFor(model => model.DonGiaDat, "", new { @class = "text-danger" })
+                        </div>
+                    </div>*@
+                <div class="form-group">
+                    <label class="control-label col-md-3">Đơn giá</label>
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.DonGiaDat, new { @class = "form-control", placeHolder = "", @required = "required", id = "DonGiaDat" })
+                        @Html.ValidationMessageFor(model => model.DonGiaDat, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-6">
+                <div class="card-body" style="padding: 0;">
+                    <div class="table-responsive">
+                        <table class="table" id="example">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        #
+                                    </th>
+                                    <th>
+                                        Tên sản phẩm
+                                    </th>
+                                    <th>
+                                        Số lượng
+                                    </th>
+                                    <th>
+                                        Đơn giá
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+
+                                @*@foreach (var item in Model)*@
+                                @*@foreach (var item in Model)
+                                    {
+                                        <tr id="row_@item.MaDonDatHangNCC">
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.MaSanPham)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Soluong)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DonGiaDat)
+                                            </td>
+                                        </tr>
+                                    }*@
+
+                                @if (@Session["Countne"] != null)
+                                {
+
+                                    object myObject = new Object();
+                                    string myObjectString = Session["Countne"].ToString();
+                                    int count = Int32.Parse(myObjectString);
+
+
+                                    for (var i = 1; i <= count; i++)
+                                    {
+                                        <tr>
+                                            <td>@i</td>
+                                            <td>@Session["STenSanPham" + i]</td>
+                                            <td>@Session["SSoLuong" + i]</td>
+                                            <td>@Session["SDonGia" + i]</td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                }
+
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group" style="margin-left: 13px;">
+            <span class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Thêm" class="btn btn-primary" />
+            </span>
+            <span>
+                @Html.ActionLink("Gửi đơn", "AD_ShowAllDonDatHangNCC", new { id = "" }, new { @class = "btn btn-primary" })
+            </span>
+        </div>
+    </div>
+}
+
+<script>
+    function getProductPrice(productId) {
+        $.ajax({
+            url: '@Url.Action("GetProductPrice", "Home")', // Đường dẫn đến action lấy giá sản phẩm
+            type: 'GET',
+            data: { productId: productId },
+            success: function (data) {
+                $('#DonGiaDat').val(data); // Hiển thị giá sản phẩm trong ô nhập liệu DonGiaDat
+            },
+            error: function () {
+                alert('Đã có lỗi xảy ra.');
+            }
+        });
+    }
+</script>

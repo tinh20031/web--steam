@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "InsertSALE";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+@model  KhoaLuanSteam.Models.SALE
+<h2 style="text-align: center;">Thêm đợt Sale cho cửa hàng</h2>
+@using (Html.BeginForm("InsertSALE", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @if (ViewBag.Success != null)
+        {
+            <div id="thongBaoThanhCong" class="alert alert-success">@ViewBag.Success</div>
+        }
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.TENSL, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <label class="control-label col-md-2">Tên loại sale</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.TENSL, new { @class = "form-control", placeHolder = "", @required = "required" })
+                @Html.ValidationMessageFor(model => model.TENSL, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.NGAYBATDAU, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <label class="control-label col-md-2">Ngày bắt đầu</label>
+            <div class="col-md-10">
+
+                @Html.TextBoxFor(model => model.NGAYBATDAU, new { @type = "date", @class = "form-control datepicker", @required = "required" })
+                @Html.ValidationMessageFor(model => model.NGAYBATDAU, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.NGAYKETTHUC, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <label class="control-label col-md-2">Ngày kết thúc</label>
+            <div class="col-md-10">
+
+                @Html.TextBoxFor(model => model.NGAYKETTHUC, "{0:dd/MM/yyyy HH:mm:ss}", new { @type = "date", @class = "form-control datepicker", @required = "required" })
+                @Html.ValidationMessageFor(model => model.NGAYKETTHUC, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        
+        <div class="form-group" style="margin-left: 13px;">
+            <span>
+                @Html.ActionLink("Trở về", "AD_ShowAllSale", new { id = "" },new { @class = "btn btn-primary"})
+            </span>
+            <span class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Thêm" class="btn btn-primary" />
+            </span>
+        </div>
+    </div>
+
+}
+
+
+

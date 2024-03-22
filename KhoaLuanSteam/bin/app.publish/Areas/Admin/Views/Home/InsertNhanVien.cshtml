@@ -1,0 +1,107 @@
+﻿@{
+    ViewBag.Title = "InsertNhanVien";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+@model KhoaLuanSteam.Models.NHANVIEN
+<h2 style="text-align: center;">Thêm nhân viên</h2>
+
+@using (Html.BeginForm("InsertNhanVien", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <hr />
+    @*@if (ViewBag.ThongBao != null)
+        {
+            <label style="color: red;">ViewBag.ThongBao</label>
+        }*@
+
+    @if (ViewBag.Success != null)
+    {
+        <div id="thongBaoThanhCong" class="alert alert-success">@ViewBag.Success</div>
+    }
+
+
+    @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+
+
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Tên nhân viên</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.TenNV, new { @class = "form-control", placeHolder = "", @required = "required" })
+            @Html.ValidationMessageFor(model => model.TenNV, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Ngày sinh</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.NgaySinh, new { @class = "form-control", placeHolder = "", @type = "date", @required = "required" })
+            @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <fieldset class="form-group">
+        <label class="control-label col-md-2">Giới tính</label>
+        <div class="col-md-10">
+            @Html.RadioButtonFor(Model => Model.GioiTinh, "Nam") Nam &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            @Html.RadioButtonFor(Model => Model.GioiTinh, "Nữ")Nữ
+        </div>
+    </fieldset>
+
+    <fieldset class="form-group">
+        <label class="control-label col-md-2">Email</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeHolder = "Example@gmail.com", @required = "required" })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+    </fieldset>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Điện thoại</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.SoDT, new { @class = "form-control", placeHolder = "", @required = "required" })
+            @Html.ValidationMessageFor(model => model.SoDT, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @*<div class="form-group">
+            <label class="control-label col-md-2">Ảnh đại diện</label>
+            <div class="col-md-10">
+                <input type="file" name="fileUpload" />
+                @ViewBag.Alert
+            </div>
+        </div>*@
+    @Html.LabelFor(model => model.HinhAnh, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        <input type="file" name="fileUpload" />
+        @ViewBag.Alert
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Tên đăng nhập</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.TenDN, new { @class = "form-control", placeHolder = "", @required = "required" })
+            @Html.ValidationMessageFor(model => model.TenDN, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Mật khẩu</label>
+        <div class="col-md-10">
+            @Html.PasswordFor(model => model.MatKhau, new { @class = "form-control", placeHolder = "", @required = "required" })
+            @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group" style="margin-left: 13px;">
+        <span>
+            @Html.ActionLink("Trở về", "AD_ShowAllNV", new { id = "" }, new { @class = "btn btn-primary" })
+        </span>
+        <span class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Thêm" class="btn btn-primary" />
+        </span>
+    </div>
+</div>
+}

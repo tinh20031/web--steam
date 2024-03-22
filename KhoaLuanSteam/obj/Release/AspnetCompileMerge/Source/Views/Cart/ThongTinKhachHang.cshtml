@@ -1,0 +1,129 @@
+﻿@model KhoaLuanSteam.Models.KHACHHANG
+@{ 
+    int paymentType = 1;
+}
+
+<style>
+    .checkout-button {
+        display: flex;
+        align-items: center;
+        border: 1px solid #ae2070;
+        padding: 5px;
+        border-radius: 5px;
+    }
+
+    label {
+        display: inline-block;
+        max-width: 100%;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .checkout-button img {
+        padding-left: 10px;
+        height: 50px;
+        width: 50px;
+    }
+
+    .content {
+        padding-left: 15px;
+    }
+
+        .content .checkout-title {
+            color: #000;
+            font-size: 13pt;
+            font-weight: 600;
+        }
+
+        .content .description {
+            color: #666;
+        }
+
+    input[type="radio"]:hover {
+        cursor: pointer;
+    }
+</style>
+
+<div class="section group" style="width:100%;padding-bottom: 20px">
+    <div style="width: 70%; margin: 0 auto;">
+        @using (Html.BeginForm("ThanhToan", "Cart", @*new { type = paymentType },*@ FormMethod.Post))
+        {
+            @Html.Hidden("type", 1)
+            <div class="form-group">
+                <h4>Thông tin giao hàng</h4>
+                <input name="MaKH" class="form-control" value="@Model.MaKH" type="hidden" />
+            </div>
+            <div class="form-group">
+                <label>Họ tên khách hàng</label>
+                <input name="TenKH" class="form-control" value="@Model.TenKH" readonly="readonly" />
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input name="Email" type="email" class="form-control" value="@Model.Email" readonly="readonly" />
+            </div>
+            <div class="form-group">
+                <label>Địa chỉ giao hàng</label>
+                <input name="DiaChi" class="form-control" value="@Session["DiaChiNhan"]" readonly="readonly"/>
+            </div>
+            <div class="form-group">
+                <label>Số điện thoại</label>
+                <input name="DienThoai" class="form-control" value="@Model.SDT" readonly="readonly"/>
+            </div>
+            <div class="checkout-button">
+                <div class="checkout-selector">
+                    <input type="radio" name="PaymentMethod" value="1" onclick="handleClick(this)" checked="checked" class="btn btn-m2 btn-checkout">
+                </div>
+                <div class="content" style="display: flex;align-items: center;">
+                    <span class="checkout-title">
+                        Thanh Toán Khi Nhận Hàng
+                    </span>
+                </div>
+            </div>
+            <br />
+            <div class="checkout-button">
+                <div class="checkout-selector">
+                    <input type="radio" name="PaymentMethod" value="2" onclick="handleClick(this)" class="btn btn-m2 btn-checkout">
+                </div>
+                <div class="content" style="display: flex;align-items: center;">
+                    <span class="checkout-title">
+                        Thanh toán bằng VNPay
+                    </span>
+                </div>
+            </div>
+            <br />
+            <div class="checkout-button">
+                <div class="checkout-selector">
+                    <input type="radio" name="PaymentMethod" value="3" onclick="handleClick(this)" class="btn btn-m2 btn-checkout">
+                </div>
+                <div class="content" style="display: flex;align-items: center;">
+                    <span class="checkout-title">
+                        Thanh toán bằng MoMo
+                    </span>
+                </div>
+            </div>
+            <br />
+            <div class="col-md-offset-2 col-md-10">
+                <input style="background-color:#0094ff" type="submit" value="Gửi đơn hàng" class="btn btn-success" />
+            </div>
+
+            <script>
+                function handleClick(radioBtn) {
+                    if (radioBtn.value == 3) { // Thanh toan bang momo
+                        $("#type").val(3);
+                    }
+                    if (radioBtn.value == 2) { // VNPay
+                        $("#type").val(2);
+                    }
+
+                    if (radioBtn.value == 1)  { // Thanh toan khi nhan hang
+                        $("#type").val(1);
+                    }
+                }
+            </script>
+        }
+    </div>
+</div>
+
+
+
+

@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "ExportExcel_PhieuDatHang";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+@model IEnumerable<KhoaLuanSteam.Areas.Models.PhieuDatHangViewModel>
+
+<div class="container">
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Mã Phiếu Đặt Hàng</th>
+                <th>Mã Khách Hàng</th>
+                <th>Ngày Đặt</th>
+                <th>Tổng Số Lượng Đặt</th>
+                <th>Phí Ship</th>
+                <th>Thành Tiền</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    if (item.ThanhTien < 500000)
+                    {
+
+                        <tr style="background-color:pink">
+                            <td>@item.MaPhieuDH</td>
+                            <td>@item.MaKH</td>
+                            <td>@item.NgayDat</td>
+                            <td>@item.Tong_SL_Dat</td>
+                            <td>@item.PhiShip</td>
+                            <td>@item.ThanhTien</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr>
+                            <td>@item.MaPhieuDH</td>
+                            <td>@item.MaKH</td>
+                            <td>@item.NgayDat</td>
+                            <td>@item.Tong_SL_Dat</td>
+                            <td>@item.PhiShip</td>
+                            <td>@item.ThanhTien</td>
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+    <a href="@Url.Action("ExportToExcel","Home")">Export Excel</a>
+</div>

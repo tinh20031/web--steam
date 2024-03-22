@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = "AD_ShowAllPhieuNhapHang";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+@model IEnumerable<KhoaLuanSteam.Models.PHIEUNHAPHANG>
+
+<h2 style="text-align: center;">Quản lý đơn nhập hàng</h2>
+@*<div class="row">
+    <div class="col-md-12">
+        <input type="button" value="Xuất File PDF" class="btn btn-primary mb-3" onclick="location.href='@Url.Action("ExportPDF_PhieuNhapHang", "Home")'" />
+    </div>
+</div>*@
+<p>
+    @Html.ActionLink("Nhập hàng từ nhà cung cấp", "InsertDonNhapHang")
+    @*@Html.ActionLink("Nhập hàng từ NCC", "InsertCT_PhieuNhapHang")*@
+</p>
+<div class="card-body" style="padding: 0;">
+    <div class="table-responsive">
+        <table class="table" id="example">
+            <thead>
+                <tr>
+                    <th>
+                        Mã phiếu nhập hàng
+                    </th>
+                    <th>
+                        @* @Html.DisplayNameFor(model => model.NHACUNGCAP.MaNCC) *@
+                        Mã nhà cung cấp
+                    </th>
+                    <th>
+                        @* @Html.DisplayNameFor(model => model.NHANVIEN.MaNV) *@
+                        Mã nhân viên
+                    </th>
+                    <th>
+                        Ngày Lập hóa đơn
+                    </th>
+                    <th>
+                        Tổng số lượng
+                    </th>
+                    <th>
+                        Tổng tiền
+                    </th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    @*<tr id="row_@item.MaPhieuNhapHang.Trim()">*@
+                    <tr id="row_@item.MaPhieuNhapHang">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MaPhieuNhapHang)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NHACUNGCAP.MaNCC)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NHANVIEN.MaNV)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NgayLap_PN)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TongSL)
+                        </td>
+                        <td>
+                            @*@Html.DisplayFor(modelItem => item.TongTien_NH)*@
+                            @String.Format("{0:0,0}", item.TongTien_NH) đ
+                        </td>
+                        <td>
+@*                            @Html.ActionLink("Xem", "DetailsCT_PhieuNhapHang", new { id = item.MaPhieuNhapHang.Trim() }, new { @class = "btn btn-primary" })
+*@                            @Html.ActionLink("Xem", "DetailsCT_PhieuNhapHang", new { id = item.MaPhieuNhapHang }, new { @class = "btn btn-primary" })
+                        </td>
+                        <td>
+                            <input type="button" value="Xuất File Excel" class="btn btn-primary mb-3" onclick="location.href='@Url.Action("ExportToExcel_CTPhieuNhapHangNhaCC", "Home", new { maphieunhaphang = item.MaPhieuNhapHang })'" />
+
+                        </td>
+                       
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>

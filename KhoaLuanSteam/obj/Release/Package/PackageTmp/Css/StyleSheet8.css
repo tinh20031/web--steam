@@ -1,0 +1,66 @@
+﻿#sidebar1 {
+    min-width: 250px;
+    max-width: 250px;
+   
+}
+@media (min-width: 768px) {
+.navbar-default    .sidebar {
+        z-index: 1;
+        position: absolute;
+        width: 250px;
+        margin-top: 9%;
+    }
+}
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+#sidebar1 ul.components {
+    padding: 20px 0;
+  
+}
+
+#sidebar1 {
+    width: 250px;
+    position: fixed;
+   top: 51px;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    background: #f8f8f8;
+    color: #fff;
+    transition: all 0.3s;
+}
+#sidebar1 ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar1 ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+    text-decoration: none;
+}
+#sidebar1 ul li a:hover {
+    text-decoration: none;
+    background-color: #eee;
+}
+
+#sidebar1 ul li.active > a, a[aria-expanded="true"] {
+    color: #fff;
+   text-decoration: none;
+    background-color: #eee;
+}
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+   
+}

@@ -1,0 +1,50 @@
+﻿@model IEnumerable<KhoaLuanSteam.Models.THONGTINSANPHAM>
+
+
+@if(Model.Count() > 0){
+
+
+<div class="row">
+    @foreach (var item in Model)
+        {
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg product__discount__item__pic">
+                            <a href="~/Product/ChiTietSP/@item.MaSanPham">
+                                <img src="~/HinhAnhSach/@item.HinhAnh" alt="@item.HinhAnh" title="@item.HinhAnh">
+                            </a>
+                            @if (@item.GiamGia > 0){
+                                <div class="product__discount__percent">-@item.GiamGia%</div>
+                            }
+                            <ul class="product__item__pic__hover">
+                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                <li><a href="/Cart/ThemGioHang/?id=@item.MaSanPham&soluong=1"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="~/Product/ChiTietSP/@item.MaSanPham">@item.TenSanPham</a></h6>
+                            <span style="display: flex;justify-content: center;">
+                               @if (@item.GiamGia <= 0)
+                                        {
+                                            <h5>
+                                                @item.GiaSanPham.Value.ToString("N0") đ
+                                            </h5>
+                                        }else{
+                                            <h5>
+                                                @Html.Action("giasachgiam", "Product", new { @MaSanPham = @item.MaSanPham })
+                                            </h5>
+                                            <span style="text-decoration: line-through; color:#b2b2b2; font-size: 15px; margin-left: 10px;">
+                                                @item.GiaSanPham.Value.ToString("N0") đ
+                                            </span>
+                                        } 
+                            </span>
+                        </div>
+                    </div>
+                </div>
+        }
+            </div>
+}else{
+    <div style="color:red;margin-top: 10px;width: 100%;font-size: 15px;margin-left: 30px;margin-bottom: 30px;">Sản Phẩm Này Không Có Sản Phẩm Nào Liên Quan !</div>
+}
+

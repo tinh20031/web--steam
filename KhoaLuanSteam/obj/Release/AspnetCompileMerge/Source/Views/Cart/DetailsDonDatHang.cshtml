@@ -1,0 +1,237 @@
+﻿@{
+    ViewBag.Title = "DetailsDonDatHang";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+@model List<KhoaLuanSteam.ViewModel.ChiTietDDHViewModel>
+<link rel="stylesheet" href="~/Css/StepBar.css" type="text/css" />
+
+<!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="/assets/ecommerce/img/breadcrumb.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>Chi Tiết Đơn Hàng</h2>
+                        <div class="breadcrumb__option">
+                            <a href="/">Trang Chủ</a>
+                            <span>Chi Tiết Đơn Hàng</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+<section class="step-wizard">
+
+    @if (ViewBag.TinhTrang == "Xử lý")
+    {
+        
+        <ul class="step-wizard-list">
+            <li class="step-wizard-item current-item">
+                <span class="progress-count">1</span>
+                <span class="progress-label">Xử lý</span>
+            </li>
+            <li class="step-wizard-item">
+                <span class="progress-count">2</span>
+                <span class="progress-label">Đã đóng gói</span>
+            </li>
+            <li class="step-wizard-item">
+                <span class="progress-count">3</span>
+                <span class="progress-label">Đang giao hàng</span>
+            </li>
+            <li class="step-wizard-item">
+                <span class="progress-count">4</span>
+                <span class="progress-label">Giao hàng hoàn tất</span>
+            </li>
+        </ul>
+    }
+    else if (ViewBag.TinhTrang == "Đã đóng gói")
+    {
+        <ul class="step-wizard-list">
+            <li class="step-wizard-item">
+                <span class="progress-count">1</span>
+                <span class="progress-label">Xử lý</span>
+            </li>
+            <li class="step-wizard-item current-item">
+                <span class="progress-count">2</span>
+                <span class="progress-label">Đã đóng gói</span>
+            </li>
+            <li class="step-wizard-item">
+                <span class="progress-count">3</span>
+                <span class="progress-label">Đang giao hàng</span>
+            </li>
+            <li class="step-wizard-item">
+                <span class="progress-count">4</span>
+                <span class="progress-label">Giao hàng hoàn tất</span>
+            </li>
+        </ul>
+    }
+    else if (ViewBag.TinhTrang == "Đang giao hàng")
+    {
+        <ul class="step-wizard-list">
+            <li class="step-wizard-item">
+                <span class="progress-count">1</span>
+                <span class="progress-label">Xử lý</span>
+            </li>
+            <li class="step-wizard-item ">
+                <span class="progress-count">2</span>
+                <span class="progress-label">Đã đóng gói</span>
+            </li>
+            <li class="step-wizard-item current-item">
+                <span class="progress-count">3</span>
+                <span class="progress-label">Đang giao hàng</span>
+            </li>
+            <li class="step-wizard-item">
+                <span class="progress-count">4</span>
+                <span class="progress-label">Giao hàng hoàn tất</span>
+            </li>
+        </ul>
+    }
+    else
+    {
+        <ul class="step-wizard-list">
+            <li class="step-wizard-item">
+                <span class="progress-count ">1</span>
+                <span class="progress-label">Xử lý</span>
+            </li>
+            <li class="step-wizard-item ">
+                <span class="progress-count">2</span>
+                <span class="progress-label">Đã đóng gói</span>
+            </li>
+            <li class="step-wizard-item">
+                <span class="progress-count">3</span>
+                <span class="progress-label">Đang giao hàng</span>
+            </li>
+            <li class="step-wizard-item current-item">
+                <span class="progress-count">4</span>
+                <span class="progress-label">Giao hàng hoàn tất</span>
+            </li>
+        </ul>
+    }
+
+</section>
+<div class="container">
+    <h3 class="pt-5">Trạng thái đơn hàng của bạn là : @ViewBag.TinhTrang</h3>
+</div>
+    <div class="container">
+        <section class="shoping-cart spad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="shoping__cart__table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th class="shoping__product">Sản phẩm</th>
+                                        <th>Giá</th>
+                                        <th>Số lượng</th>
+                                        <th>Thành tiền</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="shoping__cart__item">
+                                                <img style="width: 101px;" src="~/HinhAnhSach/@item.HinhAnh" alt="@item.HinhAnh">
+                                                <h5>@item.TenSanPham</h5>
+                                            </td>
+                                            <td class="shoping__cart__price">
+                                                @*@item.Gia đ*@
+                                                @*@item.Gia.GetValueOrDefault(0).ToString("N0") đ*@
+                                                @if (@item.GiaGiam <= 0)
+                                                {
+                                                    <span>
+                                                        @item.Gia.GetValueOrDefault(0).ToString("N0") đ
+                                                    </span>
+                                                }
+                                                else
+                                                {
+                                                    <span>
+                                                        @Html.Action("giasachgiam", "Product", new { @masanpham = @item.MaSanPham })
+                                                    </span>
+
+                                                }
+                                            </td>
+                                            <td class="shoping__cart__quantity">
+                                                <input type="number" style="border: none; text-align: center;" class="txtQuantity" readonly="readonly" value="@item.SoLuong">
+                                            </td>
+                                            <td class="shoping__cart__total">
+                                                @*@((item.Gia * item.SoLuong).GetValueOrDefault(0).ToString("N0")) đ*@
+
+                                                @if (@item.GiaGiam <= 0)
+                                                {
+                                                    <span>
+                                                        @((item.Gia * item.SoLuong).GetValueOrDefault(0).ToString("N0")) đ
+                                                    </span>
+                                                }
+                                                else
+                                                {
+                                                    <span>
+                                                        @(String.Format("{0:0,0} đ", ((item.Gia.GetValueOrDefault(0) * (1 - (item.GiaGiam.GetValueOrDefault(0) / 100))) * item.SoLuong)))
+                                                    </span>
+                                                }
+                                            </td>
+                                        </tr>
+
+                                    }
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td style="text-align: end;">Phí Ship: </td>
+                                        <td>
+                                            @if (ViewBag.PhiShip != null)
+                                            {
+                                                <strong>
+                                                    @String.Format("{0:0,0}", ViewBag.PhiShip) đ
+                                                </strong>
+                                            }
+                                            else
+                                            {
+                                                <strong>
+                                                    0 đ
+                                                </strong>
+                                            }
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td style="text-align: end;">Tổng cộng: </td>
+                                        <td><strong>@String.Format("{0:0,0}", ViewBag.Total) đ</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            @* <div class="col-12" style="text-align: end;">
+                                    <strong>Tổng cộng: @String.Format("{0:0,0}", ViewBag.Total) VND</strong>
+                                </div> *@
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="shoping__cart__btns">
+                            <a href="~/Cart/DonHang_KH" class="primary-btn cart-btn"><i class="fa fa-angle-left"></i> Trở về</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+
+
+    <style>
+        .product-price {
+            font-size: 13px;
+            line-height: 1.5;
+            color: #212529;
+            font-weight: 100;
+        }
+    </style>

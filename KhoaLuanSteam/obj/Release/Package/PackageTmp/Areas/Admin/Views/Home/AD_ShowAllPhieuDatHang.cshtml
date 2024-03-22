@@ -1,0 +1,131 @@
+﻿@model IEnumerable<KhoaLuanSteam.Models.PHIEUDATHANG>
+
+@{
+    ViewBag.Title = "AD_ShowAllPhieuDatHang";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+@{
+    var items = new List<SelectListItem>()
+{
+         new SelectListItem() {Text = "Xử Lý", Value="0"},
+         new SelectListItem() {Text = "Đã Đóng Gói", Value="1"},
+        new SelectListItem() {Text = "Đang Giao Hàng", Value="2"},
+        new SelectListItem() {Text = "Giao Hàng Hoàn Tất", Value="3"}
+    };
+}
+
+<h2 style="text-align: center;">Quản lý đơn hàng</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <input type="button" value="Xuất File Excel" class="btn btn-primary mb-3" onclick="location.href='@Url.Action("ExportExcel_PhieuDatHang", "Home")'" />
+    </div>
+</div>
+<table class="table" id="example">
+    <thead>
+        <tr>
+            <th>
+                Mã đơn đặt hàng
+            </th>
+            <th>
+                Tên khách hàng
+            </th>
+            <th>
+                Ngày đặt
+            </th>
+            <th>
+                Phí ship
+            </th>
+            <th>
+                Tổng tiền
+            </th>
+            @*<th>
+            Tình trạng
+        </th>*@
+            <th>Xử lý đơn hàng</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr id="row_@item.MaPhieuDH">
+            <td>
+                @Html.DisplayFor(modelItem => item.MaPhieuDH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KHACHHANG.TenKH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayDat)
+            </td>
+            <td>
+                @string.Format("{0:n0} đ", item.PhiShip)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.ThanhTien)*@
+                @string.Format("{0:n0} đ", item.ThanhTien)
+            </td>
+            @*<td>
+            <a href="#" class="btn-active" data-id="@item.MaKH">@Html.Raw(item.TinhTrang >= 0 ? "<strong>Xác Nhận Thành Công</strong>" : "Chưa Xác Nhận")</a>
+        </td>*@
+            <td>
+                <form method="post" action='@Url.Action("CapNhatTinhTrangDonDatHang", "Home", new { maDonHang = item.MaPhieuDH})'>
+                    @*@if (item.TinhTrang == true)
+                {
+                    items[0].Selected = false;
+                    items[1].Selected = true;
+                }
+                else
+                {
+                    items[0].Selected = true;
+                    items[1].Selected = false;
+                }*@
+
+                    @if (item.TinhTrang == 0)
+                    {
+                        items[0].Selected = true;
+                        items[1].Selected = false;
+                        items[2].Selected = false;
+                        items[3].Selected = false;
+                    }
+                    else if (item.TinhTrang == 1)
+                    {
+                        items[0].Selected = false;
+                        items[1].Selected = true;
+                        items[2].Selected = false;
+                        items[3].Selected = false;
+                    }
+                    else if (item.TinhTrang == 2)
+                    {
+                        items[0].Selected = false;
+                        items[1].Selected = false;
+                        items[2].Selected = true;
+                        items[3].Selected = false;
+                    }
+                    else
+                    {
+                        items[0].Selected = false;
+                        items[1].Selected = false;
+                        items[2].Selected = false;
+                        items[3].Selected = true;
+                    }
+                    @Html.DropDownListFor(modelItem => item.TinhTrang, items)
+                    <input type="submit" value="Cập nhật" class="btn btn-primary" />
+                </form>
+            </td>
+            <td>
+                @Html.ActionLink("Xem", "DetailsCT_PDDH", new { id = item.MaPhieuDH })
+            </td>
+            <td>
+                <input type="button" value="Xuất File Excel" class="btn btn-primary mb-3" onclick="location.href='@Url.Action("ExportToExcel_CTPhieuDatHang", "Home", new { maphieudathang = item.MaPhieuDH })'" />
+            </td>
+        </tr>
+        }
+
+    </tbody>
+</table>
+
+

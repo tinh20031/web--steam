@@ -1,0 +1,109 @@
+﻿@{
+    ViewBag.Title = "AD_ShowAllKH";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+@model IEnumerable<KhoaLuanSteam.Models.KHACHHANG>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+<h2 style="text-align: center;">Danh sách khách hàng</h2>
+<div class="card-body" style="padding: 0;">
+    <div class="table-responsive">
+        <table class="table" id="example">
+            <thead>
+                <tr>
+                    <th>
+                        @* @Html.DisplayNameFor(model => model.TenKH) *@
+                        Tên khách hàng
+                    </th>
+                    <th>
+                        @* @Html.DisplayNameFor(model => model.TenDN) *@
+                        Tên đăng nhập
+                    </th>
+                    <th>
+                        @* @Html.DisplayNameFor(model => model.Email) *@
+                        Email
+                    </th>
+                    <th>
+                        @* @Html.DisplayNameFor(model => model.NgayTao) *@
+                        Ngày tạo
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr id="row_@item.MaKH">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TenKH)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TenDN)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NgayTao)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Xem", "DetailsUserKH", new { id = item.MaKH }, new { @class = "btn btn-primary" }) |
+                            <button class="btn btn-danger delete-btn" data-id="@item.MaKH">Xóa</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    $(document).ready(function () {
+        $('.delete-btn').click(function () {
+            var id = $(this).data('id');
+            // Sử dụng SweetAlert2 thay vì hộp thoại confirm
+            Swal.fire({
+                title: 'Bạn có muốn xóa người dùng này không?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Xóa',
+                cancelButtonText: 'Hủy'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '@Url.Action("DeleteUserKH", "Home")' + '/' + id,
+                        type: 'DELETE',
+                        success: function (response) {
+                            if (response.success) {
+                                $('#row_' + id).remove();
+                                Swal.fire({
+                                    title: 'Xóa thành công',
+                                    icon: 'success'
+                                });
+                            } else {
+                                Swal.fire({
+                                    title: 'Xóa thất bại',
+                                    text: 'Có lỗi xảy ra khi xóa sản phẩm.',
+                                    icon: 'error'
+                                });
+                            }
+                        },
+                        error: function () {
+                            Swal.fire({
+                                title: 'Lỗi',
+                                text: 'Đã xảy ra lỗi khi xóa sản phẩm.',
+                                icon: 'error'
+                            });
+                        }
+                    });
+                }
+            });
+        });
+    });
+</script>

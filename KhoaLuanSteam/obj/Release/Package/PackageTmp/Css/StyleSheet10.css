@@ -1,0 +1,234 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
+
+*{
+  box-sizing: border-box;
+}
+
+
+
+.cards {
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+    max-width: 1500px;
+}
+
+.card--1 .card__img, .card--1 .card__img--hover {
+    background-image: url('https://i.pinimg.com/564x/b5/7f/30/b57f30b43f11148a25aa3b79da86a090.jpg');
+}
+
+.card--2 .card__img, .card--2 .card__img--hover {
+    background-image: url('https://i.pinimg.com/236x/d9/e8/04/d9e8040e2c35cd5dabb784ef3045e586.jpg');
+}
+
+.card--3 .card__img, .card--3 .card__img--hover {
+    background-image: url('https://i.pinimg.com/236x/c5/d5/67/c5d56760d6b8dc376feb00217073f4e5.jpg');
+}
+
+.card--4 .card__img, .card--4 .card__img--hover {
+    background-image: url('https://i.pinimg.com/564x/c9/03/79/c90379f44dbe7d274739f860f25bc76f.jpg');
+}
+.card--5 .card__img, .card--5 .card__img--hover {
+    background-image: url('https://i.pinimg.com/236x/cf/c6/b3/cfc6b3a9cbf178ea754bf0eb84330775.jpg');
+}
+
+
+
+
+.card__like {
+    width: 18px;
+}
+
+.card__clock {
+    width: 15px;
+  vertical-align: middle;
+    fill: #AD7D52;
+}
+.card__time {
+    font-size: 12px;
+    color: #AD7D52;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+.card__clock-info {
+    float: right;
+}
+
+.card__img {
+    visibility: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 235px;
+  border-top-left-radius: 12px;
+border-top-right-radius: 12px;
+  
+}
+
+.card__info-hover {
+    position: absolute;
+    padding: 16px;
+  width: 100%;
+  opacity: 0;
+  top: 0;
+}
+
+.card__img--hover {
+  transition: 0.2s all ease-out;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+  position: absolute;
+    height: 235px;
+  border-top-left-radius: 12px;
+border-top-right-radius: 12px;
+top: 0;
+  
+}
+.card {
+  margin-right: 25px;
+  transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
+  background-color: #fff;
+    width: 33.3%;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0px 13px 10px -7px rgba(0, 0, 0,0.1);
+}
+.card:hover {
+  box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
+    transform: scale(1.10, 1.10);
+}
+
+.card__info {
+z-index: 2;
+  background-color: #fff;
+  border-bottom-left-radius: 12px;
+border-bottom-right-radius: 12px;
+   padding: 16px 24px 24px 24px;
+}
+
+.card__category {
+    font-family: 'Raleway', sans-serif;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-weight: 500;
+  color: #868686;
+}
+
+.card__title {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-family: 'Roboto Slab', serif;
+}
+
+.card__by {
+    font-size: 12px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+}
+
+.card__author {
+    font-weight: 600;
+    text-decoration: none;
+    color: #AD7D52;
+}
+
+.card:hover .card__img--hover {
+    height: 100%;
+    opacity: 0.3;
+}
+
+.card:hover .card__info {
+    background-color: transparent;
+    position: relative;
+}
+
+.card:hover .card__info-hover {
+    opacity: 1;
+}
+
+
+/*title đặc trưng*/
+#nz-div-5 {
+  text-align: center;
+}
+
+#nz-div-5 h3.tde {
+  text-align: center;
+  margin: 45px 0;
+  font-size: 16px;
+  line-height: 20px;
+  text-transform: uppercase;
+}
+
+#nz-div-5 h3.tde span {
+  background: #8cc63f;
+  height: 50px;
+  line-height: 50px;
+  padding: 0px 20px;
+  color: white;
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  z-index: 45;
+  border-radius: 10px 10px 0px 0px;
+  border: 1px solid #8bb54b;
+}
+
+#nz-div-5 h3.tde :before,
+#nz-div-5 h3.tde :after {
+  content: "";
+  background: url(https://image.ibb.co/d21QDA/bgh-nz1-l.png);
+  width: 87px;
+  height: 50px;
+  position: absolute;
+  top: 19px;
+  z-index: -1;
+}
+#nz-div-5 h3.tde :before {
+  left: -44px;
+}
+#nz-div-5 h3.tde :after {
+  transform: rotateY(180deg);
+  right: -44px !important;
+}
+
+
+/*title footer*/
+
+
+/* === CODFE HEADING STYLE #1 === */
+.cf-title-01 h3 {
+	text-align:center;
+	text-transform:uppercase;
+	padding-bottom:5px;
+}
+.cf-title-01 h3:before {
+	width:28px;
+	height:5px;
+	display:block;
+	content:"";
+	position:absolute;
+	bottom:3px;
+	left:50%;
+	margin-left:-14px;
+}
+.cf-title-01 h3:after {
+	width:100px;
+	height:1px;
+	display:block;
+	content:"";
+	position:relative;
+	margin-top:25px;
+	left:50%;
+	margin-left:-50px;
+	
+}

@@ -1,0 +1,53 @@
+﻿@model  KhoaLuanSteam.Models.CT_PHIEUNHAPHANG
+@{
+    ViewBag.Title = "InsertCT_PhieuNhapHang";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align: center;">Nhập sản phẩm từ nhà cung cấp</h2>
+@using (Html.BeginForm("InsertCT_PhieuNhapHang", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @if (ViewBag.Success != null)
+        {
+            <div id="thongBaoThanhCong" class="alert alert-success">@ViewBag.Success</div>
+        }
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Sản phẩm</label>
+            <div class="col-md-10">
+                @Html.DropDownList("MaSanPham", null, "Chọn Sản Phẩm", new { @class = "form-control", style = "height: 35px" })
+                @Html.ValidationMessageFor(model => model.MaSanPham, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Số lượng</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Sluong, new { @class = "form-control", placeHolder = "" })
+                @Html.ValidationMessageFor(model => model.Sluong, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Đơn giá</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.DonGiaNhap, new { @class = "form-control", placeHolder = "" })
+                @Html.ValidationMessageFor(model => model.DonGiaNhap, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-left: 13px;">
+            <span class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Thêm" class="btn btn-primary" />
+            </span>
+            <span>
+                @Html.ActionLink("Hoàn tất", "AD_ShowAllPhieuNhapHang", new { id = "" }, new { @class = "btn btn-primary" })
+            </span>
+        </div>
+    </div>
+}

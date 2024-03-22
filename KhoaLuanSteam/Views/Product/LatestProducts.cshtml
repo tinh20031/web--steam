@@ -1,0 +1,28 @@
+﻿@model IEnumerable<KhoaLuanSteam.Models.THONGTINSANPHAM>
+
+@foreach (var item in Model)
+{
+    <a href="/Product/ChiTietSP/@item.MaSanPham" class="latest-product__item">
+        <div class="latest-product__item__pic">
+            <img src="/HinhAnhSach/@item.HinhAnh" alt="@item.TenSanPham" title="@item.TenSanPham">
+        </div>
+        <div class="latest-product__item__text">
+            <h6>@(item.TenSanPham.Length > 26 ? item.TenSanPham.Substring(0, 22) + "..." : item.TenSanPham)</h6>
+            @if (@item.GiamGia <= 0)
+            {
+                <span>
+                    @item.GiaSanPham.Value.ToString("N0") đ
+                </span>
+            }
+            else
+            {
+                <span style="color:#252525; font-size:18px; font-weight:700; line-height:27px;">
+                    @Html.Action("giasachgiam", "Product", new { @MaSanPham = @item.MaSanPham })
+                </span>
+                <span style="text-decoration: line-through; color:#b2b2b2 !important; font-size: 15px !important; margin-left: 0px; font-weight: 500;">
+                    @item.GiaSanPham.Value.ToString("N0") đ
+                </span>
+            }
+        </div>
+    </a>
+}

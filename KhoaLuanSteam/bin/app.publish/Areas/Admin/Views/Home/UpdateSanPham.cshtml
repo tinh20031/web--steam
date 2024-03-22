@@ -1,0 +1,93 @@
+﻿@model KhoaLuanSteam.Models.THONGTINSANPHAM
+@{
+    ViewBag.Title = "UpdateSanPham";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align: center;">Cập nhật sản phẩm</h2>
+@using (Html.BeginForm("UpdateSanPham", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @if (ViewBag.Success != null)
+        {
+            <div id="thongBaoThanhCong" class="alert alert-success">@ViewBag.Success</div>
+        }
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.MaSanPham)
+        <div class="form-group">
+            @* @Html.LabelFor(model => model.TenSanPham, htmlAttributes: new { @class = "control-label col-md-2" }) *@
+            <label class="control-label col-md-2">Tên sản phẩm</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.TenSanPham, new { @class = "form-control", placeHolder = "", @required = "required" })
+                @Html.ValidationMessageFor(model => model.TenSanPham, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Loại</label>
+            <div class="col-md-10">
+                @Html.DropDownList("MaLoai", null, new { @class = "form-control", style = "height: 35px", @required = "required" })
+                @Html.ValidationMessageFor(model => model.MaLoai, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Nhà cung cấp</label>
+            <div class="col-md-10">
+
+                @Html.DropDownList("MaNCC", null, new { @class = "form-control", style = "height: 35px", @required = "required" })
+                @Html.ValidationMessageFor(model => model.MaNCC, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @* @Html.LabelFor(model => model.GiaSanPham, htmlAttributes: new { @class = "control-label col-md-2" }) *@
+            <label class="control-label col-md-2">Giá sản phẩm</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.GiaSanPham, new { @class = "form-control", placeHolder = "", @required = "required" })
+                @Html.ValidationMessageFor(model => model.GiaSanPham, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @*<div class="form-group">
+            <label class="control-label col-md-2">Giảm giá %</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.GiamGia, new { @class = "form-control", placeHolder = "", @required = "required" })
+                @Html.ValidationMessageFor(model => model.GiamGia, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+        <div class="form-group">
+            @* @Html.LabelFor(model => model.MoTa, htmlAttributes: new { @class = "control-label col-md-2" }) *@
+            <label class="control-label col-md-2">Mô tả</label>
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.MoTa, new { @class = "form-control", @rows = "7", @required = "required" })
+                @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @* @Html.LabelFor(model => model.HinhAnh, htmlAttributes: new { @class = "control-label col-md-2" }) *@
+            <label class="control-label col-md-2">Hình ảnh</label>
+            <div class="col-md-10">
+                <img src="/HinhAnhSach/@Model.HinhAnh" width="100" height="150" />
+                <input type="file" name="fileUpload" value="@Model.HinhAnh" /> Cập nhật ảnh
+                @ViewBag.Alert
+                @Html.EditorFor(model => model.HinhAnh, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @* @Html.LabelFor(model => model.SLTon, htmlAttributes: new { @class = "control-label col-md-2" }) *@
+            <label class="control-label col-md-2">Số lượng tồn</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.SLTon, new { @class = "form-control", placeHolder = "" })
+                @Html.ValidationMessageFor(model => model.SLTon, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group" style="margin-left: 13px;">
+            <span>
+                @Html.ActionLink("Trở về", "AD_ShowAllProduct", new { id = "" }, new { @class = "btn btn-primary" })
+            </span>
+            <span class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Cập nhật" class="btn btn-primary" />
+            </span>
+        </div>
+    </div>
+}

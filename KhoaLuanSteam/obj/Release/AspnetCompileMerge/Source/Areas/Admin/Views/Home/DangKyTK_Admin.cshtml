@@ -1,0 +1,157 @@
+﻿@model KhoaLuanSteam.Models.NHANVIEN
+@{
+    ViewBag.Title = "DangKyTK_Admin";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+
+
+<link href="~/Css/account_admin.css" rel="stylesheet" />
+
+<!--important link source from "https://bootstrapious.com/p/bootstrap-registration-page"-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+@using (Html.BeginForm("DangKyTK_Admin", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="container">
+        <div class="row py-5 mt-4 align-items-center">
+            <!-- For Demo Purpose -->
+            <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
+                <img src="https://res.cloudinary.com/mhmd/image/upload/v1569543678/form_d9sh6m.svg" alt="" class="img-fluid mb-3 d-none d-md-block">
+                <h1>Create an Account</h1>
+                <p class="font-italic text-muted mb-0"></p>
+
+            </div>
+
+            <!-- Registeration Form -->
+            <div class="col-md-7 col-lg-6 ml-auto">
+                <div class="row">
+
+                    <!-- First Name -->
+                    <div class="col-md-6">
+                        <fieldset class="form-group">
+                            <label style="display: inline-block; max-width: 100%;    margin-bottom: 5px;    font-weight: 700;">Họ Và Tên Nhân Viên</label>
+                            <div class="abc">
+                                @Html.EditorFor(model => model.TenNV, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.TenNV, "", new { @class = "text-danger" })
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <!-- Last Name -->
+                    <div class="col-md-6">
+                        <fieldset>
+                            <label style="display: inline-block; max-width: 100%;    margin-bottom: 5px;    font-weight: 700;">Ngày Sinh</label>
+                            @Html.EditorFor(model => model.NgaySinh, new { htmlAttributes = new { @class = "form-control", type = "datetime-local" } })
+                            @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger", type = "datetime-local", name = "bdaytime" })
+                        </fieldset>
+                    </div>
+                    <div class="form-group">
+                        <label style="margin-left:20px;">Giới Tính:</label>
+                        <div class="abc" style="margin-left: 20px;">
+                            @Html.RadioButtonFor(Model => Model.GioiTinh, "Nam") Nam &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                            @Html.RadioButtonFor(Model => Model.GioiTinh, "Nữ")Nữ
+                        </div>
+                    </div>
+                    <!-- Email Address -->
+                    <div class="col-md-6" style="margin-left:35px">
+                        <fieldset class="form-group">
+                            <label style="display: inline-block; max-width: 100%;    margin-bottom: 5px;    font-weight: 700;">Email</label>
+                            <div class="abc">
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <!-- Phone Number -->
+                    <div class="input-group col-lg-12 mb-4">
+                        <select id="countryCode" name="countryCode" style="max-width: 80px" class="custom-select form-control bg-white border-left-0 border-md h-100 font-weight-bold text-muted">
+                            <option value="">+84</option>
+
+                        </select>
+                        @Html.TextBoxFor(model => model.SoDT, new { @class = "form-control", placeHolder = "Số ĐT" })
+                        @Html.ValidationMessageFor(model => model.SoDT, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+
+                        @Html.LabelFor(model => model.HinhAnh, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input type="file" name="fileUpload" />
+                            @ViewBag.Alert
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-left: 20px;">
+                        <label style="display: inline-block; max-width: 100%;    margin-bottom: 5px;    font-weight: 700;"> Ten Đăng Nhập:</label>
+                        @Html.TextBoxFor(model => model.TenDN, new { @class = "form-control", placeHolder = "" })
+                        @Html.ValidationMessageFor(model => model.TenDN, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group" style="margin-left: 10px;">
+                    <label style="display: inline-block; max-width: 100%;    margin-bottom: 5px;   font-weight: 700;"> Mật Khẩu:</label>
+                    @Html.PasswordFor(model => model.MatKhau, new { @class = "form-control", placeHolder = "", ValueType = "PassWord" })
+                    @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+                </div>
+
+
+                @*Job
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-black-tie text-muted"></i>
+                            </span>
+                        </div>
+                        <select id="job" name="jobtitle" class="form-control custom-select bg-white border-left-0 border-md">
+                            <option value="">Choose your job</option>
+                            <option value="">Designer</option>
+                            <option value="">Developer</option>
+                            <option value="">Manager</option>
+                            <option value="">Accountant</option>
+                        </select>
+                    </div>*@
+
+                <!-- Submit Button -->
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create your account" class="btn btn-primary" />
+                    </div>
+                </div>
+
+                <!-- Divider Text -->
+                <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+                    <div class="border-bottom w-100 ml-5"></div>
+                    <span class="px-2 small text-muted font-weight-bold text-muted">OR</span>
+                    <div class="border-bottom w-100 mr-5"></div>
+                </div>
+
+                <!-- Social Login -->
+                <div class="form-group col-lg-12 mx-auto">
+                    <a href="#" class="btn btn-primary btn-block py-2 btn-facebook">
+                        <i class="fa fa-facebook-f mr-2"></i>
+                        <span class="font-weight-bold">Continue with Facebook</span>
+                    </a>
+                    <a href="#" class="btn btn-primary btn-block py-2 btn-twitter">
+                        <i class="fa fa-twitter mr-2"></i>
+                        <span class="font-weight-bold">Continue with Twitter</span>
+                    </a>
+                </div>
+
+                <!-- Already Registered -->
+                <div class="text-center w-100">
+                    <p class="text-muted font-weight-bold">Already Registered? <a href="#" class="text-primary ml-2">Login</a></p>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+}
+
+
+<script src="~/js/signup_admin.js"></script>
+
+
+
